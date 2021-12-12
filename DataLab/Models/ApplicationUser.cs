@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DataLab.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,6 +20,6 @@ namespace FarmApplication.Models
         public string FullName { get; private set; }
 
 
-        //public virtual ICollection<FarmMembers> FarmMembers { get; set; }
+        public virtual ICollection<AuthorizedUsers> AuthorizedUsers { get; set; }
     }
 }
