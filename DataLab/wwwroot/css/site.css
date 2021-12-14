@@ -69,3 +69,59 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+ 
+}
+
+/*-------------Navbar css------------*/
+.navbar {
+    background-color: #020412 !important;
+    border-bottom: none !important;
+}
+
+.nav-item a {
+    color: white !important;
+    font-size: 15px;
+    font-weight: 500
+}
+
+.fa-home {
+    font-size: 20px;
+    color: #8c52ff;
+}
+
+.nav-item .span-home {
+    color: white !important;
+}
+
+.navbar-brand span {
+    color: white !important;
+    font-size: 15px;
+    margin-left: 5px;
+    font-weight: 500
+}
+
+/*----------footer css------------*/
+.footer {
+    background-color: #020412 !important;
+    border-bottom: none !important;
+}
+
+.footer {
+    border-top: none !important;
+    font-size: 12px;
+    color: white !important;
+}
+
+.footer span {
+    color: #8c52ff !important;
+}
