@@ -13,5 +13,10 @@ namespace DataLab.Controllers
         {
             return View();
         }
+
+        public IActionResult testpage()
+        {
+            return View();
+        }
     }
 }
