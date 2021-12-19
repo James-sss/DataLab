@@ -31,7 +31,11 @@ namespace DataLab.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            var modelVM = new RegisterVM()
+            {
+                ApplicationUserList = _userManager.Users
+            };
+            return View(modelVM);
         }
 
         [HttpPost]

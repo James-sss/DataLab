@@ -5,6 +5,8 @@
     Layout = "_AdminLayout";
 }
 
+
+
 <style>
     label {
         display: flex;
@@ -38,12 +40,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
+        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
             <div class="card ">
                 <div class="card-header">
                     <h3 class="card-title">Register New User</h3>
                 </div>
-
                 <form method="post">
                     <div class="card-body">
                         <div class="form-group">
@@ -87,5 +88,65 @@
                 </form>
             </div>
         </div>
+        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">All Registered Users</h3>
+                </div>
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Account Type</th>
+
+                            </tr>
+                        </thead>
+
+                        @if (Model.ApplicationUserList.Any())
+                        {
+
+                            <tbody>
+
+                                @foreach (var RegisteredUser in Model.ApplicationUserList)
+                                {
+
+                                    <tr>
+                                        <td>@RegisteredUser.FullName </td>
+                                        <td>@RegisteredUser.Email </td>
+                                        <td>@RegisteredUser.AccountType </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        }
+                        else
+                        {
+                            <tr><td colspan="2">Currently No Information Found !! </td></tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
+
+@section Scripts{
+
+    <script>
+
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": false
+            });
+        });
+    </script>
+}

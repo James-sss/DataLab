@@ -11,8 +11,12 @@
     <title>Data-Lab Admin</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link href="~/lib/admin-lte/css/all.min.css" rel="stylesheet" />
+    @*<link href="~/lib/admin-lte/css/all.min.css" rel="stylesheet" />*@
     <link href="~/lib/admin-lte/css/adminlte.min.css" rel="stylesheet" />
+    <!-- datatable -->
+    <link href="~/lib/admin-lte/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/admin-lte/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/d315c7b249.js" crossorigin="anonymous"></script>
 </head>
@@ -179,6 +183,12 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Data table -->
+    <script src="~/lib/admin-lte/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/admin-lte/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/admin-lte/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/admin-lte/js/dataTables.bootstrap4.min.js"></script>
+    <!-- adminlte -->
     <script src="~/lib/admin-lte/js/adminlte.min.js"></script>
     <!-- Toast Notifications -->
     @await Component.InvokeAsync("Notyf")
