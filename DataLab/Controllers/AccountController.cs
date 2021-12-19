@@ -154,6 +154,99 @@ namespace DataLab.Controllers
 
 
 
+        [HttpGet]
+        public async Task<IActionResult> EditRegisteredUser(string Id)
+        {
+
+            var RegisteredUser = await _userManager.FindByIdAsync(Id);
+
+            if (RegisteredUser == null)
+            {
+                _toastNotification.Warning($"User with Id = {Id} Cannot be found");
+                return View();
+            }
+            else
+            {
+                
+                var model = new EditRegisteredUserVM
+                {
+
+                    FirstName = RegisteredUser.FirstName,
+                    LastName = RegisteredUser.LastName,
+                    Email = RegisteredUser.Email,
+                    AccountType = RegisteredUser.AccountType,
+                };
+
+                return View(model);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditRegisteredUser(EditRegisteredUserVM model)
+        {
+            var RegisteredUser = await _userManager.FindByIdAsync(model.Id);
+
+            if (RegisteredUser == null)
+            {
+                _toastNotification.Warning($"User with Id = {model.Id} Cannot be found");
+                return View(model);
+            }
+            else
+            {
+                RegisteredUser.FirstName = model.FirstName;
+                RegisteredUser.LastName = model.LastName;
+                RegisteredUser.Email = model.Email;
+                RegisteredUser.AccountType = model.AccountType;
+
+                var result = await _userManager.UpdateAsync(RegisteredUser);
+
+                if (result.Succeeded)
+                {
+                    _toastNotification.Success($"User was updated successfully");
+                    return RedirectToAction("Register");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(model);
+            }
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteRegisteredUser(string Id)
+        {
+
+            var RegisteredUser = await _userManager.FindByIdAsync(Id);
+
+            if (RegisteredUser == null)
+            {
+                _toastNotification.Warning($"User with Id = {Id} Cannot be found");
+                return View("Register");
+            }
+            else
+            {
+
+                var result = await _userManager.DeleteAsync(RegisteredUser);
+
+                if (result.Succeeded)
+                {
+                    _toastNotification.Success($"User was deleted successfully");
+                    return RedirectToAction("Register");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View("Register");
+            }
+        }
+
+
+
         public IActionResult testpage()
         {
             return View();
