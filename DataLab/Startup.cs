@@ -1,3 +1,4 @@
+using AspNetCoreHero.ToastNotification;
 using DataLab.DataManager;
 using FarmApplication.Models;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,7 @@ namespace DataLab
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContextPool<DataLabDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DataLab-DatabaseConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DataLabDbContext>();
+            services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
