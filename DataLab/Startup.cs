@@ -1,6 +1,6 @@
 using AspNetCoreHero.ToastNotification;
 using DataLab.DataManager;
-using FarmApplication.Models;
+using DataLab.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

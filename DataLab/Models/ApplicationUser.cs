@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FarmApplication.Models
+namespace DataLab.Models
 {
     public class ApplicationUser : IdentityUser
     {
