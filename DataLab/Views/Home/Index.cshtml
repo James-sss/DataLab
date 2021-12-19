@@ -2,12 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-<section id="banner">
-    <div class="img-div">
+
+<div class="banner">
+    <div class="content-div">
         <img src="~/Images/DataLab-Logo2.png" style="" class="img-responsive" />
+        <div class="text-div">
+            <p>We manage and process the environmental collected data by making it visually interactable readable, and accessible.</p>
+        </div>
+        <a class="btn btn-lg" asp-area="" asp-controller="Account" asp-action="Login"> Login <i class="fas fa-sign-in-alt"></i></a>
     </div>
-    <div class="text-div">
-        <p>We manage and process the environmental collected data by making it visually interactable readable, and accessible.</p>
-    </div>
-    <a class="btn btn-group-lg" asp-area="" asp-controller="Account" asp-action="Login"> login <i class="fas fa-sign-in-alt"></i></a>
-</section>
+</div>
