@@ -1,6 +1,8 @@
-﻿@{
+﻿@model LoginVm
+
+@{
     ViewBag.Title = "Login";
- }
+}
 
 
 <div class="login-section">
@@ -12,16 +14,29 @@
                     <p>Authorized Users Only</p>
                     <form method="post">
                         <div class="form-content">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input asp-for="Email" class="form-control" placeholder="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password">
+                                <input asp-for="Password" class="form-control" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-checkbox" style="display:flex;color:white">
+                                    <label asp-for="RememberMe">
+                                        <input asp-for="RememberMe" />
+                                        @Html.DisplayNameFor(model => model.RememberMe)
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <button class="btn btn-group-lg btn-lg">
-                            Log in
-                        </button>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-group-lg btn-lg"> Log in</button>
+                        </div>
+
                     </form>
                 </div>
             </div>

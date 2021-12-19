@@ -1,0 +1,91 @@
+﻿@model RegisterVM
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_AdminLayout";
+}
+
+<style>
+    label {
+        display: flex;
+    }
+
+    .card-header {
+        background-color: #8c52ff;
+        color: white;
+    }
+
+    .btn-submit {
+        background-color: #8c52ff !important;
+        border: none !important;
+        width: 200px !important
+    }
+
+    .card {
+        top: 2% !important
+    }
+
+    div.dataTables_wrapper div.dataTables_filter input {
+        width: 100%;
+    }
+
+    .table-fa:hover {
+        color: #8c52ff;
+    }
+</style>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h3 class="card-title">Register New User</h3>
+                </div>
+
+                <form method="post">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <label asp-for="FirstName"></label>
+                            <input asp-for="FirstName" class="form-control" placeholder="Enter Firstname" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastName"></label>
+                            <input asp-for="LastName" class="form-control" placeholder="Enter Lastname" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" placeholder="Enter email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleSelectRounded0">Account type</label>
+                            <select asp-for="AccountType" class="custom-select rounded-0"
+                                    asp-items="Html.GetEnumSelectList<Enum_AccountType>()">
+                                <option value="">--- Select ---</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" class="form-control" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

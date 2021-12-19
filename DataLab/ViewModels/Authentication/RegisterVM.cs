@@ -26,7 +26,7 @@ namespace DataLab.ViewModels.Authentication
 
         [Required]
         [Display(Name = "AccountType")]
-        public Enum_AccountType? Account { get; set; }
+        public Enum_AccountType? AccountType { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
