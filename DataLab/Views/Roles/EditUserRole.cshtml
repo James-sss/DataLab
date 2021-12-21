@@ -1,7 +1,7 @@
-﻿@model UserRolesVM
+﻿@model EditRoleVM
 
 @{
-    ViewData["Title"] = "CreateUserRole";
+    ViewData["Title"] = "EditUserRole";
     Layout = "_AdminLayout";
 }
 
@@ -13,7 +13,7 @@
         <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
             <div class="card mt-2">
                 <div class="card-header">
-                    <h3 class="card-title">Add New Role</h3>
+                    <h3 class="card-title">Edit Role</h3>
                 </div>
 
                 <form method="post">
@@ -27,8 +27,9 @@
                         </div>
 
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer" id="double-buttons">
                         <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+                        <a asp-controller="Roles" asp-action="CreateUserRole" class="btn btn-Cancel">Cancel</a>
                     </div>
                 </form>
             </div>
@@ -37,7 +38,7 @@
         <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
             <div class="card mt-2">
                 <div class="card-header">
-                    <h3 class="card-title">All Created Roles</h3>
+                    <h3 class="card-title">All Assigned users to this role</h3>
                 </div>
 
                 <div class="card-body">
@@ -46,28 +47,22 @@
 
                         <thead>
                             <tr>
-                                <th>Role</th>
-                                <th></th>
+                                <th>User</th>
+                                <th>Account Type</th>
                             </tr>
                         </thead>
 
-                        @if (Model.IdentityRole.Any())
+                        @if (Model.UsersInRoleList.Any())
                         {
-
 
                             <tbody>
 
-                                @foreach (var role in Model.IdentityRole)
+                                @foreach (var user in Model.UsersInRoleList)
                                 {
 
                                     <tr>
-                                        <td>@role.Name </td>
-                                        <td>
-                                            <form method="post" asp-controller="Roles" asp-action="DeleteRole" asp-route-Id="@role.Id">
-                                                <a asp-controller="Roles" asp-action="EditUserRole" asp-route-Id="@role.Id"><i class="btn btn-sm fas fa-edit table-fa"></i></a>
-                                                <button class="btn btn-sm fa fa-trash-o table-fa" type="submit" onclick="return confirm('Are you sure you want to delete role: @role.Name')"></button>
-                                            </form>
-                                        </td>
+                                        <td>@user.FullName </td>
+                                        <td>@user.AccountType </td>
                                     </tr>
                                  }
 
@@ -75,12 +70,12 @@
                         }
                         else
                         {
-                            <tr><td colspan="2">Currently No Information Found !! </td></tr>
+                            <tr><td colspan="2">Currently there are no assigned users to this role !! </td></tr>
                         }
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
+
