@@ -165,20 +165,21 @@ namespace DataLab.Controllers
                 Response.StatusCode = 404;
                 return View("DashBordNotFoundErros");
             }
-            else
+
+            ViewBag.Userid = RegisteredUser.Id;
+            var roles = await _userManager.GetRolesAsync(RegisteredUser);
+
+            var model = new EditRegisteredUserVM
             {
-                
-                var model = new EditRegisteredUserVM
-                {
+                FirstName = RegisteredUser.FirstName,
+                LastName = RegisteredUser.LastName,
+                Email = RegisteredUser.Email,
+                AccountType = RegisteredUser.AccountType,
+                ListRolesOwnedbyUser = roles,
+            };
 
-                    FirstName = RegisteredUser.FirstName,
-                    LastName = RegisteredUser.LastName,
-                    Email = RegisteredUser.Email,
-                    AccountType = RegisteredUser.AccountType,
-                };
-
-                return View(model);
-            }
+            return View(model);
+            
         }
 
         [HttpPost]

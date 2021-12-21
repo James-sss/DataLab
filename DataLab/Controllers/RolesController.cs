@@ -27,7 +27,6 @@ namespace DataLab.Controllers
 
 
 
-
         [HttpGet]
         public IActionResult CreateUserRole()
         {
@@ -66,7 +65,6 @@ namespace DataLab.Controllers
             }
             return View(model);
         }
-
 
 
 
@@ -132,7 +130,6 @@ namespace DataLab.Controllers
 
 
 
-
         [HttpPost]
         public async Task<IActionResult> DeleteRole(string Id)
         {
@@ -156,6 +153,64 @@ namespace DataLab.Controllers
             }
 
             return View("CreateUserRole");
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> AddRoleToUser(string Id)
+        {
+
+            var user = await _userManager.FindByIdAsync(Id);
+
+            if (user == null)
+            {
+                Response.StatusCode = 404;
+                return View("DashBordNotFoundErros");
+            }
+
+            List<IdentityRole> ListRolesAssignedToUser = new List<IdentityRole>();
+            List<IdentityRole> ListRolesNotAssignedToUser = new List<IdentityRole>();
+
+            foreach (IdentityRole role in _roleManager.Roles.ToList())
+            {
+                var list = await _userManager.IsInRoleAsync(user, role.Name) ? ListRolesAssignedToUser : ListRolesNotAssignedToUser;
+                list.Add(role);
+            }
+
+            var modelVM = new AddRoleToUserVM
+            {
+                UserId = user.Id,
+                FullNames = user.FullName,
+                RolesAssignedToUser = ListRolesAssignedToUser,
+                RolesNotAssignedToUser = ListRolesNotAssignedToUser
+            };
+            return View(modelVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddRoleToUser(AddRoleToUserVM modelVM)
+        {
+
+            var user = await _userManager.FindByIdAsync(modelVM.UserId);
+
+            if (user == null)
+            {
+                Response.StatusCode = 404;
+                return View("DashBordNotFoundErros");
+            }
+
+            var CurrentUserRoles = await _userManager.GetRolesAsync(user);
+            var selectedRoles = modelVM.ListRolesToAddORRemove.Except(CurrentUserRoles);
+            var removedRoles = CurrentUserRoles.Except(modelVM.ListRolesToAddORRemove);
+
+            await _userManager.AddToRolesAsync(user, selectedRoles);
+
+            await _userManager.RemoveFromRolesAsync(user, removedRoles);
+
+            _toastNotification.Success($"Record was successfully modified ");
+            return RedirectToAction("AddRoleToUser");
+
         }
     }
 }

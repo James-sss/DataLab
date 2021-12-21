@@ -26,5 +26,11 @@ namespace DataLab.ViewModels.Authentication
         [Required]
         [Display(Name = "AccountType")]
         public Enum_AccountType? AccountType { get; set; }
+
+        public IList<string> ListRolesOwnedbyUser { get; set; }
+        public EditRegisteredUserVM()
+        {
+            ListRolesOwnedbyUser = new List<string>();
+        }
     }
 }

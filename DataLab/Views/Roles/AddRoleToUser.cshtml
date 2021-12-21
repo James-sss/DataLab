@@ -1,0 +1,118 @@
+﻿@model AddRoleToUserVM
+
+@{
+    ViewData["Title"] = "AddRoleToUser";
+    Layout = "_AdminLayout";
+}
+
+<link href="~/css/templateModification.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Assign roles to: @Model.FullNames</h3>
+                </div>
+                <form method="post">
+                    <input type="hidden" name="userId" value="@Model.UserId" />
+                    <div class="card-body">
+                        <table id="table1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Available Roles
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            @if (Model.RolesNotAssignedToUser.Any())
+                            {
+                                <tbody>
+
+                                    @foreach (var role in Model.RolesNotAssignedToUser)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @role.Name
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="ListRolesToAddORRemove" value="@role.Name">
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+
+                            }
+                            else
+                            {
+                                <tr><td colspan="2">All Roles Are Assigined  </td></tr>
+                            }
+                        </table>
+                    </div>
+                    <div class="card-footer" id="double-buttons">
+                        <button type="submit" class="btn btn-primary btn-submit">Add</button>
+                        <a asp-controller="Account" asp-action="EditRegisteredUser" asp-route-Id="@Model.UserId" class="btn btn-Cancel">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Remove assigned roles from: @Model.FullNames</h3>
+                </div>
+                <form method="post">
+                    <input type="hidden" name="userId" value="@Model.UserId" />
+                    <div class="card-body">
+                        <table id="table2" class="table table-bordered table-striped">
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Assigned Roles
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @if (Model.RolesAssignedToUser.Any())
+                            {
+                                <tbody>
+
+                                    @foreach (var role in Model.RolesAssignedToUser)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @role.Name
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="ListRolesToAddORRemove" value="@role.Name"
+                                                       @(Model.RolesAssignedToUser.Any() ? "checked=\"checked\"" : "") />
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+
+                            }
+                            else
+                            {
+                                <tr><td colspan="2">Currently No Roles Are Assigined  </td></tr>
+                            }
+                        </table>
+                    </div>
+                    <div class="card-footer" id="double-buttons">
+                        <button type="submit" class="btn btn-primary btn-submit">Remove</button>
+                        <a asp-controller="Account" asp-action="EditRegisteredUser" asp-route-Id="@Model.UserId" class="btn btn-Cancel">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "EditRegisteredUser";
     Layout = "_AdminLayout";
+    var userid = ViewBag.Userid;
 }
 
 <link href="~/css/templateModification.css" rel="stylesheet" />
@@ -47,6 +48,49 @@
                         <a asp-controller="Account" asp-action="Register" class="btn btn-Cancel">Cancel</a>
                     </div>
                 </form>
+            </div>
+        </div>
+
+
+        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">User assigned roles </h3>
+                    <a asp-controller="Roles" asp-action="AddRoleToUser" asp-route-Id="@userid" class="tableheader-btn" style="float:right"><i class=" tableheader-fa right fas fa-plus-square"> Manage Roles</i></a>
+                </div>
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+
+                        <thead>
+                            <tr>
+                                <th>Role</th>
+
+                            </tr>
+                        </thead>
+
+                        @if (Model.ListRolesOwnedbyUser.Any())
+                        {
+
+
+                            <tbody>
+
+                                @foreach (var role in Model.ListRolesOwnedbyUser)
+                                {
+
+                                    <tr>
+                                        <td>@role </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        }
+                        else
+                        {
+                            <tr><td colspan="2">Currently Assign no roles were Found !! </td></tr>
+                        }
+                    </table>
+
+                </div>
             </div>
         </div>
     </div>
