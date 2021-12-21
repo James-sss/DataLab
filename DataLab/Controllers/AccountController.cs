@@ -57,6 +57,12 @@ namespace DataLab.Controllers
                 if (result.Succeeded)
                 {
 
+                    if (_signInManager.IsSignedIn(User) && User.IsInRole("Role_Admin"))
+                    {
+                        _toastNotification.Success("User Added Successfully");
+                        return RedirectToAction("Register");
+                    }
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("testpage", "Account");
 
