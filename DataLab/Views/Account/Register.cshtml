@@ -5,37 +5,7 @@
     Layout = "_AdminLayout";
 }
 
-
-
-<style>
-    label {
-        display: flex;
-    }
-
-    .card-header {
-        background-color: #8c52ff;
-        color: white;
-    }
-
-    .btn-submit {
-        background-color: #8c52ff !important;
-        border: none !important;
-        width: 200px !important
-    }
-
-    .card {
-        top: 2% !important
-    }
-
-    div.dataTables_wrapper div.dataTables_filter input {
-        width: 100%;
-    }
-
-    .table-fa:hover {
-        color: #8c52ff;
-    }
-</style>
-
+<link href="~/css/templateModification.css" rel="stylesheet" />
 
 
 <div class="container-fluid">
@@ -94,7 +64,7 @@
                     <h3 class="card-title">All Registered Users</h3>
                 </div>
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="table1" class="table table-bordered table-striped">
 
                         <thead>
                             <tr>
@@ -142,17 +112,3 @@
 
 
 
-@section Scripts{
-
-    <script>
-
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": false
-            });
-        });
-    </script>
-}

@@ -5,28 +5,7 @@
     Layout = "_AdminLayout";
 }
 
-<style>
-    label {
-        display: flex;
-    }
-    .card-header {
-        background-color: #8c52ff;
-        color: white;
-    }
-    .btn-submit, .btn-Cancel {
-        background-color: #8c52ff !important;
-        border: none !important;
-        width: 120px !important;
-        color: white;
-    }
-    .card {
-        top: 2% !important
-    }
-    div.dataTables_wrapper div.dataTables_filter input {
-        width: 100%;
-    }
-</style>
-
+<link href="~/css/templateModification.css" rel="stylesheet" />
 
 
 <div class="container-fluid">
@@ -63,7 +42,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer" id="double-buttons">
                         <button type="submit" class="btn btn-primary btn-submit">Submit</button>
                         <a asp-controller="Account" asp-action="Register" class="btn btn-Cancel">Cancel</a>
                     </div>
