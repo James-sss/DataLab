@@ -162,8 +162,8 @@ namespace DataLab.Controllers
 
             if (RegisteredUser == null)
             {
-                _toastNotification.Warning($"User with Id = {Id} Cannot be found");
-                return View();
+                Response.StatusCode = 404;
+                return View("DashBordNotFoundErros");
             }
             else
             {
@@ -188,8 +188,8 @@ namespace DataLab.Controllers
 
             if (RegisteredUser == null)
             {
-                _toastNotification.Warning($"User with Id = {model.Id} Cannot be found");
-                return View(model);
+                Response.StatusCode = 404;
+                return View("DashBordNotFoundErros");
             }
             else
             {
@@ -223,8 +223,8 @@ namespace DataLab.Controllers
 
             if (RegisteredUser == null)
             {
-                _toastNotification.Warning($"User with Id = {Id} Cannot be found");
-                return View("Register");
+                Response.StatusCode = 404;
+                return View("DashBordNotFoundErros");
             }
             else
             {

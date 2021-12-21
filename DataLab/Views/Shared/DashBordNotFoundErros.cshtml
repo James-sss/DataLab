@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "DashBordNotFoundErros";
+    Layout = "_AdminLayout";
+}
+
+
+
+<div style="padding-top:10%">
+    @if (ViewBag.ErrorMessage404 != null && ViewBag.ShowRequestId != null)
+    {
+        <h1 class="headline text-warning">@ViewBag.ErrorStatusCode</h1>
+
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
+
+            <p>
+                @ViewBag.ErrorMessage404
+                Meanwhile, you may return back.
+            </p>
+
+            <a href="##" onClick="history.go(-1); return false;" class="btn btn-warning" style="margin-top:1%"> Retun Back</a>
+        </div>
+    }
+    else if (ViewBag.ErrorMessage500 != null)
+    {
+        <h1 class="headline text-warning">@ViewBag.ErrorStatusCode</h1>
+
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Something went wrong.</h3>
+
+            <p>
+                @ViewBag.ErrorMessage500
+                Meanwhile, you may return back.
+            </p>
+
+            <a href="##" onClick="history.go(-1); return false;" class="btn btn-danger" style="margin-top:1%"> Retun Back</a>
+        </div>
+    }
+    else if (ViewBag.ErrorMessageOthers != null)
+    {
+        <h1 class="headline text-warning">@ViewBag.ErrorStatusCode</h1>
+
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Something went wrong.</h3>
+
+            <p>
+                @ViewBag.ErrorMessageOthers
+                Meanwhile, you may return back.
+            </p>
+
+            <a href="##" onClick="history.go(-1); return false;" class="btn btn-danger" style="margin-top:1%"> Retun Back</a>
+        </div>
+    }
+</div>
+
