@@ -66,3 +66,20 @@ div.dataTables_wrapper div.dataTables_filter input {
 .tableheader-fa:hover {
     color: black !important
 }
+
+/*----page titles----*/
+
+.pagetitle-single span {
+    font-size: 18px;
+    font-weight: 500;
+    color: blueviolet;
+    letter-spacing: 0.05rem;
+}
+
+.pagetitle-double span {
+    font-size: 18px;
+    font-weight: 500;
+    color: blueviolet;
+    letter-spacing: 0.05rem;
+    margin-right: 25px
+}

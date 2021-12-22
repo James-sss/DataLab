@@ -9,6 +9,7 @@
 
 
 <div class="container-fluid">
+    <p class="pt-3 mb-1 ml-1 d-flex pagetitle-single"> <br /> <span><i class="fas fa-user-shield"></i> &nbsp @Model.RoleName</span> </p>
     <div class="row">
         <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
             <div class="card mt-2">
@@ -57,13 +58,13 @@
                             <tbody>
 
                                 @foreach (var user in Model.UsersInRoleList)
-                                 {
+                                {
 
                                     <tr>
                                         <td>@user.FullName </td>
                                         <td>@user.AccountType </td>
                                     </tr>
-                                 }
+                                }
 
                             </tbody>
                         }

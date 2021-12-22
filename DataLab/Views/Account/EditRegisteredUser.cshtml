@@ -10,8 +10,22 @@
 
 
 <div class="container-fluid">
+    <div class="d-flex">
+        <div class="btn-group mt-3 " style="justify-content: flex-start">
+            <p class="pt-2 mb-1 ml-1 d-flex pagetitle-double"> <br /> <span><i class="fas fa-user"></i>&nbsp @Model.FirstName @Model.LastName</span> </p>
+
+            <button type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Edit Options</button>
+            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" style="color:blueviolet" data-toggle="dropdown" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu" role="menu" style="">
+                <a class="dropdown-item" asp-controller="Roles" asp-action="AddRoleToUser" asp-route-Id="@userid">Manage Roles</a>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
-        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
             <div class="card ">
                 <div class="card-header d-flex">
                     <h3 class="card-title">Edit Register User:</h3>
@@ -52,11 +66,10 @@
         </div>
 
 
-        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">User assigned roles </h3>
-                    <a asp-controller="Roles" asp-action="AddRoleToUser" asp-route-Id="@userid" class="tableheader-btn" style="float:right"><i class=" tableheader-fa right fas fa-plus-square"> Manage Roles</i></a>
                 </div>
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
