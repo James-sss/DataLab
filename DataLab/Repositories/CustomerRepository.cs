@@ -1,5 +1,5 @@
 ﻿using DataLab.DataManager;
-using DataLab.Migrations;
+using DataLab.IServices;
 using DataLab.Models;
 using System;
 using System.Collections.Generic;
@@ -17,29 +17,36 @@ namespace DataLab.Repositories
             _context = context;
         }
 
-        public Task<Customers> AddCustomer(Customers customer)
+        public async Task<Customers> AddCustomer(Customers customer)
         {
-            throw new NotImplementedException();
+            await _context.Customers.AddAsync(customer);
+            await _context.SaveChangesAsync();
+            return customer;
         }
 
-        public Task<Customers> DeleteCustomer(Customers customer)
+        public async Task<Customers> DeleteCustomer(Customers customer)
         {
-            throw new NotImplementedException();
+            _context.Customers.Remove(customer);
+            await _context.SaveChangesAsync();
+            return customer;
         }
 
         public IEnumerable<Customers> GetAllCustomers()
         {
-            throw new NotImplementedException();
+            return _context.Customers;
         }
 
-        public Task<Customers> GetCustomerByid(int Id)
+        public async Task<Customers> GetCustomerByid(int Id)
         {
-            throw new NotImplementedException();
+            return await _context.Customers.FindAsync(Id);
         }
 
-        public Task<Customers> UpdateCustomer(Customers customer)
+        public async Task<Customers> UpdateCustomer(Customers customer)
         {
-            throw new NotImplementedException();
+            var Object = _context.Customers.Attach(customer);
+            Object.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return customer;
         }
     }
 }

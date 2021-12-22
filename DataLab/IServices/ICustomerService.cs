@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataLab.Migrations
+namespace DataLab.IServices
 {
     public interface ICustomerService
     {

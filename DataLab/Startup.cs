@@ -1,6 +1,6 @@
 using AspNetCoreHero.ToastNotification;
 using DataLab.DataManager;
-using DataLab.Migrations;
+using DataLab.IServices;
 using DataLab.Models;
 using DataLab.Repositories;
 using Microsoft.AspNetCore.Builder;
