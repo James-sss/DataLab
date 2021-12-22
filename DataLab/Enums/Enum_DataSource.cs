@@ -9,7 +9,5 @@ namespace DataLab.Enums
     {
         Farm,
         Factory,
-        Water,
-        Soil
     }
 }

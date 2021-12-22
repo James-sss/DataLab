@@ -28,7 +28,11 @@ namespace DataLab.Controllers
         [HttpGet]
         public IActionResult AddCustomer()
         {
-            return View();
+            var modelVM = new AddCustomerVM()
+            {
+                CustomerList = _customerService.GetAllCustomers()
+            };
+            return View(modelVM);
         }
 
         [HttpPost]
@@ -77,7 +81,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditFarm(EditCustomerVM modelVM)
+        public async Task<IActionResult> EditCustomer(EditCustomerVM modelVM)
         {
             if (ModelState.IsValid)
             {

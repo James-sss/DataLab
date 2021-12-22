@@ -78,7 +78,7 @@
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-address-card nav-icon" style="color: #f5f5f5 "></i>
                                 <p style="font-size: 17px; font-weight: 400; margin-left: 5px; letter-spacing: 0.05rem !important">
-                                    Manage Account
+                                    Account
                                     <i class="right fas fa-angle-left" style="color: #8c52ff"></i>
                                 </p>
                             </a>
@@ -98,16 +98,16 @@
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-handshake nav-icon" style=" color: #f5f5f5"></i>
                                 <p style="font-size: 17px; font-weight: 400; margin-left: 5px; letter-spacing: 0.05rem !important">
-                                    Manage Customers
+                                    Customers
                                     <i class="right fas fa-angle-left" style="color: #8c52ff"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a asp-area="" asp-controller="Customers" asp-action="AddCustomer" class="nav-link">
                                         <i class="nav-icon fas fa-minus" style="color: #8c52ff"></i>
                                         <p>
-                                            Simple Link
+                                            Manage Customers
                                         </p>
                                     </a>
                                 </li>
@@ -118,7 +118,7 @@
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-database nav-icon" style="color: #f5f5f5 "></i>
                                 <p style="font-size: 17px; font-weight: 400; margin-left: 5px; letter-spacing: 0.05rem !important">
-                                    Manage Data
+                                    Data
                                     <i class="right fas fa-angle-left" style="color: #8c52ff"></i>
                                 </p>
                             </a>
@@ -138,7 +138,7 @@
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-users nav-icon" style="color: #f5f5f5"></i>
                                 <p style="font-size: 17px; font-weight: 400; margin-left: 5px; letter-spacing: 0.05rem !important">
-                                    Manage Users
+                                    Users
                                     <i class="right fas fa-angle-left" style="color: #8c52ff"></i>
                                 </p>
                             </a>
@@ -147,13 +147,13 @@
                                     <a asp-area="" asp-controller="Account" asp-action="Register" class="nav-link">
                                         <i class="nav-icon fas fa-minus" style="color: #8c52ff"></i>
                                         <p>
-                                            Add Users
+                                            Manage Users
                                         </p>
                                     </a>
                                     <a asp-area="" asp-controller="Roles" asp-action="CreateUserRole" class="nav-link">
                                         <i class="nav-icon fas fa-minus" style="color: #8c52ff"></i>
                                         <p>
-                                            Add Roles
+                                            Manage Roles
                                         </p>
                                     </a>
                                 </li>

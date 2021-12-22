@@ -19,6 +19,7 @@ namespace DataLab.ViewModels.Customer
         public Enum_DataSource? DataSource { get; set; }
 
         [Required]
+        [EmailAddress]
         [Display(Name = "Address")]
         public string Address { get; set; }
 
