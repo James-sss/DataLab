@@ -43,7 +43,8 @@ namespace DataLab.DataManager
             modelBuilder.Entity<AuthorizedUsers>()
                   .HasKey(c => new
                   {
-                      c.CustomerId
+                      c.CustomerId,
+                      c.UserId
                   });
 
         }

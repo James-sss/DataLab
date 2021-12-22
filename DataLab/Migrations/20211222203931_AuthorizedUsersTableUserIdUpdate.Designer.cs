@@ -4,14 +4,16 @@ using DataLab.DataManager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataLab.Migrations
 {
     [DbContext(typeof(DataLabDbContext))]
-    partial class DataLabDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211222203931_AuthorizedUsersTableUserIdUpdate")]
+    partial class AuthorizedUsersTableUserIdUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

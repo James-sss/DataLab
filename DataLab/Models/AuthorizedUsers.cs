@@ -10,6 +10,7 @@ namespace DataLab.Models
     public class AuthorizedUsers
     {
         public int CustomerId { get; set; }
+        public string UserId { get; set; }
 
         [ForeignKey("CustomerId")]
         public virtual Customers Customers { get; set; }
