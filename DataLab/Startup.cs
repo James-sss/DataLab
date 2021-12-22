@@ -1,6 +1,8 @@
 using AspNetCoreHero.ToastNotification;
 using DataLab.DataManager;
+using DataLab.Migrations;
 using DataLab.Models;
+using DataLab.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,8 @@ namespace DataLab
             services.AddDbContextPool<DataLabDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DataLab-DatabaseConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DataLabDbContext>();
             services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
+
+            services.AddScoped<ICustomerService, CustomerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
