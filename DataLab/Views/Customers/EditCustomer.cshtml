@@ -19,7 +19,7 @@
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu" role="menu" style="">
-                <a class="dropdown-item" asp-controller="" asp-action="" asp-route-Id="">Manage Authorization</a>
+                <a class="dropdown-item" asp-controller="Customers" asp-action="AssignUserToCust" asp-route-Id="@Model.CustomerId">Manage Authorization</a>
             </div>
         </div>
     </div>
@@ -30,7 +30,6 @@
                 <div class="card-header">
                     <h3 class="card-title">Edit Customer</h3>
                 </div>
-
                 <form method="post">
                     <div class="card-body">
                         <div class="form-group">
@@ -59,6 +58,47 @@
                         <a asp-controller="Customers" asp-action="AddCustomer" class="btn btn-Cancel">Cancel</a>
                     </div>
                 </form>
+            </div>
+        </div>
+
+        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 mt-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Authorized Users</h3>
+                </div>
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-striped">
+
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>AccountType</th>
+                            </tr>
+                        </thead>
+
+                        @if (Model.AuthorizedUsersList.Any())
+                        {
+
+                            <tbody>
+
+                                @foreach (var user in Model.AuthorizedUsersList)
+                                {
+
+                                    <tr>
+                                        <td>@user.ApplicationUser.FullName</td>
+                                        <td>@user.ApplicationUser.AccountType </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        }
+                        else
+                        {
+                            <tr><td colspan="2">No Authorized Users Found !! </td></tr>
+                        }
+                    </table>
+                </div>
             </div>
         </div>
     </div>

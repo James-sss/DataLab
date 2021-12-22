@@ -82,6 +82,7 @@ namespace DataLab.Controllers
                 CustomerName = customer.CustomerName,
                 DataSource = customer.DataSource,
                 Address = customer.Address,
+                AuthorizedUsersList = _authUserService.GetAuthUsersList(Id)
             };
 
             return View(customerModel);
@@ -144,7 +145,7 @@ namespace DataLab.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> AssignUserToCustomer(int Id)
+        public async Task<IActionResult> AssignUserToCust(int Id)
         {
             var customer = await _customerService.GetCustomerByid(Id);
 
@@ -178,7 +179,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUserToFarm(AssignUserToCustVM modelVM, string[] ListUsersToAdd, string[] ListuserstoRemove)
+        public async Task<IActionResult> AssignUserToCust(AssignUserToCustVM modelVM, string[] ListUsersToAdd, string[] ListUserstoRemove)
         {
             foreach (string selectedId in ListUsersToAdd)
             {
@@ -192,7 +193,7 @@ namespace DataLab.Controllers
                 return RedirectToAction("EditCustomer", new { id = modelVM.CustomerId });
             }
 
-            foreach (string selectedId in ListuserstoRemove)
+            foreach (string selectedId in ListUserstoRemove)
             {
                 AuthorizedUsers user = new AuthorizedUsers();
                 user.CustomerId = modelVM.CustomerId;
