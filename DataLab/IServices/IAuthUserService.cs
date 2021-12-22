@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataLab.IServices
 {
-    public interface IAuthUsersService
+    public interface IAuthUserService
     {
-        bool IsUserInCompany(ApplicationUser user, int CustomerId);
+        bool IsUserAssigned(ApplicationUser user, int CustomerId);
         Task<AuthorizedUsers> AddAuthUsers(AuthorizedUsers users);
         Task<AuthorizedUsers> RemoveAuthUsers(AuthorizedUsers users);
         IEnumerable<AuthorizedUsers> GetAuthUsersList(int CustomerId);

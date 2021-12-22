@@ -36,6 +36,7 @@ namespace DataLab
             services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
 
             services.AddScoped<ICustomerService, CustomerRepository>();
+            services.AddScoped<IAuthUserService, AuthUserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

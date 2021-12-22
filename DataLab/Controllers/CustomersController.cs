@@ -2,6 +2,7 @@
 using DataLab.IServices;
 using DataLab.Models;
 using DataLab.ViewModels.Customer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,12 +16,18 @@ namespace DataLab.Controllers
     {
         private readonly ICustomerService _customerService;
         private readonly INotyfService _toastNotification;
+        private readonly IAuthUserService _authUserService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public CustomersController(ICustomerService customerService,
-                                   INotyfService toastNotification)
+                                   INotyfService toastNotification,
+                                   IAuthUserService authUserService,
+                                   UserManager<ApplicationUser> userManager)
         {
             _customerService = customerService;
             _toastNotification = toastNotification;
+            _authUserService = authUserService;
+            _userManager = userManager;
         }
 
 
@@ -134,5 +141,70 @@ namespace DataLab.Controllers
             }
         }
 
+
+
+        [HttpGet]
+        public async Task<IActionResult> AssignUserToCustomer(int Id)
+        {
+            var customer = await _customerService.GetCustomerByid(Id);
+
+            if (customer == null)
+            {
+                Response.StatusCode = 404;
+                return View("DashBordNotFoundErros");
+            }
+
+            List<ApplicationUser> listOfUserAssigned = new List<ApplicationUser>();
+            List<ApplicationUser> listOfUserNotAssigned = new List<ApplicationUser>();
+
+
+            var AllApplicationUsersList = _userManager.Users;
+
+            foreach (ApplicationUser user in AllApplicationUsersList.ToList())
+            {
+                var list = _authUserService.IsUserAssigned(user, customer.CustomerId) ? listOfUserAssigned : listOfUserNotAssigned;
+                list.Add(user);
+            }
+
+            var modelVM = new AssignUserToCustVM
+            {
+                CustomerId = customer.CustomerId,
+                CustomerName = customer.CustomerName,
+                DataSource = customer.DataSource,
+                ListUsersAssigned = listOfUserAssigned,
+                ListUsersNotAssigned = listOfUserNotAssigned,
+            };
+            return View(modelVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddUserToFarm(AssignUserToCustVM modelVM, string[] ListUsersToAdd, string[] ListuserstoRemove)
+        {
+            foreach (string selectedId in ListUsersToAdd)
+            {
+                AuthorizedUsers user = new AuthorizedUsers();
+                user.CustomerId = modelVM.CustomerId;
+                user.UserId = selectedId;
+
+                await _authUserService.AddAuthUsers(user);
+
+                _toastNotification.Success($"User was added successfully");
+                return RedirectToAction("EditCustomer", new { id = modelVM.CustomerId });
+            }
+
+            foreach (string selectedId in ListuserstoRemove)
+            {
+                AuthorizedUsers user = new AuthorizedUsers();
+                user.CustomerId = modelVM.CustomerId;
+                user.UserId = selectedId; 
+
+                await _authUserService.RemoveAuthUsers(user);
+
+                _toastNotification.Success($"User was removed successfully");
+                return RedirectToAction("EditCustomer", new { id = modelVM.CustomerId });
+            }
+
+            return View();
+        }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLab.Repositories
 {
-    public class AuthUserRepository : IAuthUsersService
+    public class AuthUserRepository : IAuthUserService
     {
         private readonly DataLabDbContext _context;
 
@@ -30,7 +30,7 @@ namespace DataLab.Repositories
             return _context.AuthorizedUsers.Where(u => u.CustomerId == CustomerId).Include(u => u.ApplicationUser).ToList();
         }
 
-        public bool IsUserInCompany(ApplicationUser user, int CustomerId)
+        public bool IsUserAssigned(ApplicationUser user, int CustomerId)
         {
             return _context.AuthorizedUsers.Any(e => e.ApplicationUser.Id == user.Id && e.CustomerId == CustomerId);
         }
