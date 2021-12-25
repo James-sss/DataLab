@@ -19,6 +19,7 @@ namespace DataLab.DataManager
         public DbSet<Customers> Customers { get; set; }
         public DbSet<CollectedData> CollectedData { get; set; }
         public DbSet<AuthorizedUsers> AuthorizedUsers { get; set; }
+        public DbSet<SensorTypes> SensorTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,6 +48,11 @@ namespace DataLab.DataManager
                       c.UserId
                   });
 
+            modelBuilder.Entity<SensorTypes>()
+              .HasKey(c => new
+              {
+                  c.SensorTypeId,
+              });
         }
     }
 }

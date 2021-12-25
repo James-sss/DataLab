@@ -4,14 +4,16 @@ using DataLab.DataManager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataLab.Migrations
 {
     [DbContext(typeof(DataLabDbContext))]
-    partial class DataLabDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211225173859_TemporallyRemoveTableCollectedData")]
+    partial class TemporallyRemoveTableCollectedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,37 +115,6 @@ namespace DataLab.Migrations
                     b.ToTable("AuthorizedUsers");
                 });
 
-            modelBuilder.Entity("DataLab.Models.CollectedData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Datetime")
-                        .HasColumnType("Datetime");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int?>("SensorTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Value")
-                        .HasColumnType("decimal(5,1)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("SensorTypeId");
-
-                    b.ToTable("CollectedData");
-                });
-
             modelBuilder.Entity("DataLab.Models.Customers", b =>
                 {
                     b.Property<int>("CustomerId")
@@ -163,21 +134,6 @@ namespace DataLab.Migrations
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("DataLab.Models.SensorTypes", b =>
-                {
-                    b.Property<int>("SensorTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("SensorType")
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("SensorTypeId");
-
-                    b.ToTable("SensorTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -330,21 +286,6 @@ namespace DataLab.Migrations
                     b.Navigation("Customers");
                 });
 
-            modelBuilder.Entity("DataLab.Models.CollectedData", b =>
-                {
-                    b.HasOne("DataLab.Models.Customers", "Customers")
-                        .WithMany("CollectedData")
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("DataLab.Models.SensorTypes", "SensorTypes")
-                        .WithMany("CollectedData")
-                        .HasForeignKey("SensorTypeId");
-
-                    b.Navigation("Customers");
-
-                    b.Navigation("SensorTypes");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -404,13 +345,6 @@ namespace DataLab.Migrations
             modelBuilder.Entity("DataLab.Models.Customers", b =>
                 {
                     b.Navigation("AuthorizedUsers");
-
-                    b.Navigation("CollectedData");
-                });
-
-            modelBuilder.Entity("DataLab.Models.SensorTypes", b =>
-                {
-                    b.Navigation("CollectedData");
                 });
 #pragma warning restore 612, 618
         }
