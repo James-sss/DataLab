@@ -26,9 +26,13 @@ namespace DataLab.Controllers
 
 
         [HttpGet]
-        public IActionResult AddSensorType()
+        public IActionResult AddSensor()
         {
-            return View();
+            var modelVM = new AddSensorTypeVM()
+            {
+                ListSensorTypes = _sensorService.GetAllSensorTypes()
+            };
+            return View(modelVM);
         }
         [HttpPost]
         public async Task<IActionResult> AddSensor(AddSensorTypeVM modelVM)
