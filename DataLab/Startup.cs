@@ -37,6 +37,7 @@ namespace DataLab
 
             services.AddScoped<ICustomerService, CustomerRepository>();
             services.AddScoped<IAuthUserService, AuthUserRepository>();
+            services.AddScoped<ISensorService, SensorRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
