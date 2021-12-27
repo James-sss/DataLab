@@ -181,6 +181,8 @@ namespace DataLab.Controllers
         [HttpPost]
         public async Task<IActionResult> AssignUserToCust(AssignUserToCustVM modelVM, string[] ListUsersToAdd, string[] ListUserstoRemove)
         {
+            bool Action_Add = false;
+
             foreach (string selectedId in ListUsersToAdd)
             {
                 AuthorizedUsers user = new AuthorizedUsers();
@@ -189,8 +191,7 @@ namespace DataLab.Controllers
 
                 await _authUserService.AddAuthUsers(user);
 
-                _toastNotification.Success($"User was added successfully");
-                return RedirectToAction("EditCustomer", new { id = modelVM.CustomerId });
+                Action_Add = true;
             }
 
             foreach (string selectedId in ListUserstoRemove)
@@ -200,12 +201,17 @@ namespace DataLab.Controllers
                 user.UserId = selectedId; 
 
                 await _authUserService.RemoveAuthUsers(user);
+            }
 
-                _toastNotification.Success($"User was removed successfully");
+            if (Action_Add == true)
+            {
+                _toastNotification.Success($"User was assigned successfully");
                 return RedirectToAction("EditCustomer", new { id = modelVM.CustomerId });
             }
 
-            return View();
+            _toastNotification.Success($"User was removed successfully");
+            return RedirectToAction("EditCustomer", new { id = modelVM.CustomerId });
+
         }
     }
 }
