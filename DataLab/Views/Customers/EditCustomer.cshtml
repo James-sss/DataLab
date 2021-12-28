@@ -20,6 +20,7 @@
             </button>
             <div class="dropdown-menu" role="menu" style="">
                 <a class="dropdown-item" asp-controller="Customers" asp-action="AssignUserToCust" asp-route-Id="@Model.CustomerId">Manage Authorization</a>
+                <a class="dropdown-item" asp-controller="Data" asp-action="FetchData" asp-route-Id="@Model.CustomerId">Manage Data</a>
             </div>
         </div>
     </div>

@@ -41,7 +41,6 @@ namespace DataLab.Controllers
                 DataSource = customer.DataSource,
                 Address = customer.Address,
                 CollectedData = _dataService.GetAllDataByCustId(customer.CustomerId),
-                
             };
 
             return View(modelVM);
