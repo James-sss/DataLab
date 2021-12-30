@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "FetchData";
     Layout = "_AdminLayout";
+
+    var customerId = ViewBag.customerId;
 }
 
 <link href="~/css/templateModification.css" rel="stylesheet" />
@@ -13,17 +15,12 @@
 
 
 <div class="container-fluid">
+
     <div class="d-flex">
         <div class="btn-group mt-3 " style="justify-content: flex-start">
             <p class="pt-2 mb-1 ml-1 d-flex pagetitle-double"> <br /> <span><i class="fas fa-building"></i>&nbsp @Model.CustomerName @Model.DataSource </span> </p>
-
-            <button type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Edit Options</button>
-            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" style="color:blueviolet" data-toggle="dropdown" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu" role="menu" style="">
-                <a class="dropdown-item" asp-controller="" asp-action="" asp-route-Id="">Add Data</a>
-            </div>
+            <a asp-controller="Data" asp-action="AddData" asp-route-Id="@customerId" type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Add Data</a>
+            <a asp-controller="Customers" asp-action="EditCustomer" asp-route-Id="@customerId" type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Back</a>
         </div>
     </div>
 
@@ -36,12 +33,11 @@
         <div class="col-12">
             <div class="card mt-2">
                 <div class="card-header">
-                    <h3 class="card-title">All Clients Collected Data</h3>
+                    <h3 class="card-title">All Customers Collected Data</h3>
                 </div>
 
                 <div class="card-body">
                     <table id="table1" class="table table-bordered table-striped">
-
 
                         <thead>
                             <tr>
@@ -66,6 +62,12 @@
                                         <td>@data.SensorTypes.SensorType </td>
                                         <td>@data.Value </td>
 
+                                        <td>
+                                            <form method="post" asp-controller="Data" asp-action="DeleteData" asp-route-Id="@data.Id">
+                                                <a asp-controller="Data" asp-action="EditData" asp-route-Id="@data.Id"><i class="btn btn-sm fas fa-edit table-fa"></i></a>
+                                                <button class="btn btn-sm fa fa-trash-o table-fa" type="submit" onclick="return confirm('Are you sure you want to delete data file with id: @data.Id')"></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 }
 
@@ -73,8 +75,7 @@
                         }
                         else
                         {
-                            <tr><td colspan="2">Currently No Data Was Found !! </td></tr>
-
+                            <tr><td colspan="4">Currently No Data Was Found !! </td></tr>
                         }
                     </table>
 

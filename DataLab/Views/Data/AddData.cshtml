@@ -1,0 +1,96 @@
+﻿@model AddDataVM
+
+@{
+    ViewData["Title"] = "AddData";
+    Layout = "_AdminLayout";
+
+    var customerId = ViewBag.Customerid;
+    var customerName = ViewBag.CustomerName;
+    var dataSource = ViewBag.Datasource;
+}
+
+<link href="~/css/templateModification.css" rel="stylesheet" />
+
+<link href="~/lib/jquery-datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+
+    <div class="d-flex">
+        <div class="btn-group mt-3 " style="justify-content: flex-start">
+            <p class="pt-2 mb-1 ml-1 d-flex pagetitle-double"> <br /> <span><i class="fas fa-building"></i>&nbsp @customerName @dataSource </span> </p>
+            <a asp-controller="Data" asp-action="FetchData" asp-route-Id="@customerId" type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">View Data</a>
+            <a asp-controller="Customers" asp-action="EditCustomer" asp-route-Id="@customerId" type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Edit Customer</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h3 class="card-title">Add Data To Farm</h3>
+                </div>
+
+                <form method="post">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <input hidden asp-for="CustomerId" />
+
+                            <label asp-for="Location"></label>
+                            <input asp-for="Location" class="form-control" placeholder="Enter Location" />
+                            <span asp-validation-for="Location" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Datetime"></label>
+                            <div class='input-group date'>
+                                <input asp-for="Datetime" type='text' id='datetimepicker1' class="form-control" />
+                            </div>
+                            <span asp-validation-for="Datetime" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SensorTypeId"></label>
+                            <select asp-for="SensorTypeId" class="custom-select rounded-0"
+                                    asp-items="ViewBag.SensorTypesSelectList">
+                                <option value="">--- Select ---</option>
+                            </select>
+                            <span asp-validation-for="SensorTypeId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Value"></label>
+                            <input asp-for="Value" class="form-control" />
+                            <span asp-validation-for="Value" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card-footer" id="double-buttons">
+                        <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+                        <a asp-controller="Customers" asp-action="EditCustomer" asp-route-Id="@customerId" class="btn btn-Cancel">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+
+
+    <script src="~/lib/jquery-datetimepicker/jquery.datetimepicker.full.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datetimepicker1').datetimepicker({
+                format: 'Y-m-d H:i',
+                startDate: '2021',
+                mask: true,
+                step: 30,
+                showTimezone: true,
+            }).setLocale('fi');
+        });
+    </script>
+
+}
+

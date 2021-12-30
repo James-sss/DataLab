@@ -42,9 +42,9 @@ namespace DataLab.Repositories
             return _context.CollectedData.Where(e => e.Customers.CustomerId == customerid).Include(e => e.SensorTypes).ToList();
         }
 
-        public Task<CollectedData> GetDataByid(int Id)
+        public async Task<CollectedData> GetDataByid(int Id)
         {
-            throw new NotImplementedException();
+            return await _context.CollectedData.FindAsync(Id);
         }
 
         public async Task<CollectedData> UpdateData(CollectedData data)

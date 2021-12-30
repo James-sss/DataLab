@@ -42,6 +42,8 @@ namespace DataLab.Controllers
                 return View("DashBordNotFoundErros");
             }
 
+            ViewBag.customerId = customer.CustomerId;
+
             var modelVM = new FetchDataVM
             {
                 CustomerName = customer.CustomerName,
@@ -200,7 +202,7 @@ namespace DataLab.Controllers
 
                 await _dataService.UpdateData(data);
 
-                _toastNotification.Success($"Data with file with id {modelVM.CollectedDataId} was successfully updated ");
+                _toastNotification.Success($"Data file with id {modelVM.CollectedDataId} was successfully updated ");
                 return RedirectToAction("FetchData", new { id = modelVM.CustomerId });
             }
 
