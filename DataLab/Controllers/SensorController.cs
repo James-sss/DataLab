@@ -66,6 +66,8 @@ namespace DataLab.Controllers
                 return View("DashBordNotFoundErros");
             }
 
+            ViewBag.SensorType = sensor.SensorType;
+
             EditSensorTypeVM sensorObject = new EditSensorTypeVM
             {
                 SensorTypeId = sensor.SensorTypeId,

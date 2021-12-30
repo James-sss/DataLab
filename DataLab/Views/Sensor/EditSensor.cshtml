@@ -3,13 +3,15 @@
 @{
     ViewData["Title"] = "EditSensor";
     Layout = "_AdminLayout";
+
+    var sensorType = ViewBag.SensorType;
 }
 
 <link href="~/css/templateModification.css" rel="stylesheet" />
 
 
 <div class="container-fluid">
-   <p class="pt-3 mb-1 ml-1 d-flex pagetitle-single"> <br /> <span><i class="fa fa-sellsy"></i> &nbsp Manage Sensors</span> </p>
+   <p class="pt-3 mb-1 ml-1 d-flex pagetitle-single"> <br /> <span><i class="fa fa-sellsy"></i> &nbsp Sensor: @sensorType</span> </p>
    
     <div class="row">
         <div class="col-12">
