@@ -12,6 +12,10 @@ namespace DataLab.Models
         [Key]
         public int Id { get; set; }
 
+        public int CustomerId { get; set; }
+
+        public int SensorTypeId { get; set; }
+
         [ForeignKey("CustomerId")]
         public virtual Customers Customers { get; set; }
 
