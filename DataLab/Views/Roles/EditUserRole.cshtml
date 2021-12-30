@@ -9,7 +9,14 @@
 
 
 <div class="container-fluid">
-    <p class="pt-3 mb-1 ml-1 d-flex pagetitle-single"> <br /> <span><i class="fas fa-user-shield"></i> &nbsp @Model.RoleName</span> </p>
+   
+    <div class="d-flex">
+        <div class="btn-group mt-3 " style="justify-content: flex-start">
+            <p class="pt-2 mb-1 ml-1 d-flex pagetitle-double"> <br /> <span><i class="fas fa-user-shield"></i>&nbsp @Model.RoleName </span> </p>
+            <a asp-controller="Roles" asp-action="CreateUserRole" type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Back</a>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
             <div class="card mt-2">

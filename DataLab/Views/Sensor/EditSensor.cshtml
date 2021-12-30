@@ -11,8 +11,13 @@
 
 
 <div class="container-fluid">
-   <p class="pt-3 mb-1 ml-1 d-flex pagetitle-single"> <br /> <span><i class="fa fa-sellsy"></i> &nbsp Sensor: @sensorType</span> </p>
-   
+    <div class="d-flex">
+        <div class="btn-group mt-3 " style="justify-content: flex-start">
+            <p class="pt-2 mb-1 ml-1 d-flex pagetitle-double"> <br /> <span><i class="fa fa-sellsy"></i>&nbsp Sensor: @sensorType </span> </p>
+            <a asp-controller="Sensor" asp-action="AddSensor" type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Back</a>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-12">
             <div class="card mt-2">
