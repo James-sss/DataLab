@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label asp-for="Datetime"></label>
                             <div class='input-group date'>
-                                <input asp-for="Datetime" type='text' id='datetimepicker1' class="form-control" />
+                                <input asp-for="Datetime" type='text' id='datetimepicker1' class="form-control" placeholder="dd-mm-yyyy hh:mm" />
                             </div>
                             <span asp-validation-for="Datetime" class="text-danger"></span>
                         </div>
@@ -83,7 +83,6 @@
             $('#datetimepicker1').datetimepicker({
                 format: 'Y-m-d H:i',
                 startDate: '2021',
-                mask: true,
                 step: 30,
                 showTimezone: true,
             }).setLocale('fi');

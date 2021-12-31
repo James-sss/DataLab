@@ -23,7 +23,7 @@ namespace DataLab.Models
         public string Location { get; set; }
 
         [Column(TypeName = "Datetime")]
-        public DateTime Datetime { get; set; }
+        public DateTime? Datetime { get; set; }
 
         [ForeignKey("SensorTypeId")]
         public virtual SensorTypes SensorTypes { get; set; }

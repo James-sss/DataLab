@@ -17,9 +17,9 @@ namespace DataLab.ViewModels.Data
 
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
         [Display(Name = "Datetime")]
-        public DateTime Datetime { get; set; }
+        public DateTime? Datetime { get; set; }
 
         [Required]
         [Display(Name = "SensorType")]
