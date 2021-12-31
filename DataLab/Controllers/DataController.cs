@@ -123,7 +123,7 @@ namespace DataLab.Controllers
 
                 await _dataService.AddData(Data);
 
-                _toastNotification.Success($"Data was added to customer {modelVM.CustomerName} successfully ");
+                _toastNotification.Success($"Data was added to customer successfully ");
                 return RedirectToAction("AddData", new { id = modelVM.CustomerId });
             }
 
