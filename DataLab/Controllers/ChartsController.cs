@@ -75,7 +75,7 @@ namespace DataLab.Controllers
                 SensorResults.AverageValues = (int)CollectedSensorResult.AverageValues;
                 SensorResults.MinimumValues = (int)CollectedSensorResult.MinimumValues;
                 SensorResults.MaxmumValues = (int)CollectedSensorResult.MaxmumValues;
-                SensorResults.TotalFilesCount = (int)CollectedSensorResult.TotalFilesCount;
+                SensorResults.TotalFilesCount = CollectedSensorResult.TotalFilesCount;
 
                 SensorResultsList.Add(SensorResults);
 
