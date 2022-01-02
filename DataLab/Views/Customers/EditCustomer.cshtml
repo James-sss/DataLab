@@ -21,6 +21,7 @@
             <div class="dropdown-menu" role="menu" style="">
                 <a class="dropdown-item" asp-controller="Customers" asp-action="AssignUserToCust" asp-route-Id="@Model.CustomerId">Manage Authorization</a>
                 <a class="dropdown-item" asp-controller="Data" asp-action="FetchData" asp-route-Id="@Model.CustomerId">Manage CustomerData</a>
+                <a class="dropdown-item" asp-controller="Charts" asp-action="GetCharts" asp-route-Id="@Model.CustomerId">Manage DataCharts</a>
             </div>
             <a asp-controller="Customers" asp-action="AddCustomer" asp-route-Id="@Model.CustomerId" type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Back</a>
         </div>

@@ -96,6 +96,14 @@ namespace DataLab.Controllers
                 ViewBag.TotalDataFiles = TotalFilesCountlist;
             }
 
+            var getyears = _dataService.GetAllDataByCustId(customer.CustomerId).Select(e => new
+            {
+                DateTime = e.Datetime,
+            }).OrderByDescending(e => e.DateTime?.Year).ToList();
+
+            ViewBag.firstYear = getyears.Select(e => e.DateTime?.ToString("MM/dd/yyyy")).Last();
+            ViewBag.lastYear = getyears.Select(e => e.DateTime?.ToString("MM/dd/yyyy")).First();
+
             //Testing results with json
             //return Json(GetSensorDataResults);
 
