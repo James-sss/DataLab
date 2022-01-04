@@ -36,6 +36,11 @@ namespace DataLab.Controllers
             var UserId = user?.Id;
 
             var GetResources = _accessService.ReturnResourcesByUserId(UserId).FirstOrDefault();
+            if (GetResources == null)
+            {
+                return RedirectToAction("AccessDenied", "Home");
+            }
+
             var Alldata = _accessService.GetData(GetResources.CustomerId);
 
             var modelVm = new GetResourceVM();

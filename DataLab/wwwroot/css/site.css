@@ -249,3 +249,19 @@ body {
         width: 250px !important;
     }
 }
+
+/*----------------AccessDenied page css-------------*/
+
+.section-denied {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center
+}
+
+.div-denied {
+    margin: 0 auto;
+    max-width: 400px;
+    padding-top: 14%;
+    margin-bottom: 10%
+}
