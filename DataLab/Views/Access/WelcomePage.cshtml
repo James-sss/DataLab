@@ -1,0 +1,142 @@
+﻿@model GetResourceVM
+
+@{
+    ViewData["Title"] = "WelcomePage";
+    Layout = "_AdminLayout";
+}
+
+<link href="~/css/welcomepageModification.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+
+@if (Model.CollectedData.Any() && Model.AuthUsers.Any())
+{
+
+    var Temp_data = Model.CollectedData.Where(e => e.SensorTypes.SensorType.Contains("temperature")).Count();
+    var Rain_data = Model.CollectedData.Where(e => e.SensorTypes.SensorType.Contains("rainFall")).Count();
+    var PH_data = Model.CollectedData.Where(e => e.SensorTypes.SensorType.Contains("pH")).Count();
+    var AuthUser_count = Model.AuthUsers.Count();
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger ">
+                    <div class="inner">
+                        <h4>Temperature </h4>
+                        <p>Sensor Files</p>
+                        <h3> @Temp_data </h3>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-thermometer"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h4>RainFall</h4>
+                        <p>Sensor Files</p>
+                        <h3> @Rain_data </h3>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-waterdrop"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <div class="small-box  bg-success">
+                    <div class="inner inner-warning">
+                        <h4>PH</h4>
+                        <p>Sensor Files</p>
+                        <h3> @PH_data </h3>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-erlenmeyer-flask"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h4>Authorized</h4>
+                        <p>Users Count</p>
+                        <h3>@AuthUser_count</h3>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <section class="col-lg-7 connectedSortable mt-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-chart-pie mr-1"></i>
+                            Total Data Files Per Sensor
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content p-0">
+                            <canvas id="PieChart_TotalFileCount" style="min-height: 250px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-lg-5 connectedSortable mt-lg-5">
+                <div class="card bg-gradient-primary">
+
+                    <partial name="_PartialMap" />
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+}
+
+
+@section Scripts{
+
+    <script src="~/lib/chart-js/Chart.min.js"></script>
+
+    <script type="text/javascript">
+        const labels_sensorTypes = [@Html.Raw(ViewBag.sensorTypes)];
+        const datavalues = [@ViewBag.totalDataFiles];
+        var ctx = document.getElementById('PieChart_TotalFileCount').getContext('2d');
+        var chart = new Chart(ctx, {
+           type: 'pie',
+           data: {
+               labels: labels_sensorTypes,
+               datasets: [{
+                   label: labels_sensorTypes,
+                   data: datavalues,
+                    backgroundColor: [
+
+                        'rgb(75,181,67)',
+                        'rgb(70, 127, 208)',
+                        'rgb(223, 71, 89)',
+                    ],
+
+                   borderwidth: 1
+               }],
+           },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+            }
+        });
+    </script>
+}
+

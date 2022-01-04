@@ -64,7 +64,7 @@ namespace DataLab.Controllers
                     }
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("testpage", "Account");
+                    return RedirectToAction("WelcomePage", "Access");
 
                 }
                 else
@@ -95,7 +95,7 @@ namespace DataLab.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("testpage", "Account");
+                    return RedirectToAction("WelcomePage", "Access");
                 }
                 else
                 {
@@ -121,7 +121,7 @@ namespace DataLab.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("testpage", "Account");
+                    return RedirectToAction("WelcomePage", "Access");
                 }
                 else
                 {

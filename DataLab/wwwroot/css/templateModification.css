@@ -18,7 +18,6 @@ label {
 
 #double-buttons .btn-submit, .btn-Cancel {
     background-color: #8c52ff !important;
-    /*border: none !important;*/
     width: 120px !important;
     color: white;
     border: 1px solid transparent !important;
@@ -83,3 +82,4 @@ div.dataTables_wrapper div.dataTables_filter input {
     letter-spacing: 0.05rem;
     margin-right: 25px
 }
+

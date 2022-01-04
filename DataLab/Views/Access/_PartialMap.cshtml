@@ -1,0 +1,69 @@
+﻿
+@model GetResourceVM
+
+@{
+    ViewData["Title"] = "_PartialMap";
+}
+
+
+
+@if (Model.CustomerName.Contains("Noora"))
+{
+    <div class="card-header border-0">
+        <h3 class="card-title">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            @Model.CustomerName @Model.DataSource
+        </h3>
+    </div>
+    <div class="card-body">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2653.4784809879525!2d26.84093270457459!3d67.23360190773393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x442cce18dd7476fd%3A0x217bfb62f50e84d7!2sAlakitisentie%20899%2C%2099550%20Sodankyl%C3%A4!5e0!3m2!1sen!2sfi!4v1641300987023!5m2!1sen!2sfi" id="world-map" style="height: 250px; width: 100%;"></iframe>
+    </div>
+}
+else if (Model.CustomerName.Contains("Friman"))
+{
+    <div class="card-header border-0">
+        <h3 class="card-title">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            @Model.CustomerName @Model.DataSource
+        </h3>
+    </div>
+    <div class="card-body">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.15016687322!2d25.18668519069835!3d62.632276582907295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4685c7e330512e1f%3A0x177d7a9afa769e5!2sKekkosentie%20491%2C%2043100%20Saarij%C3%A4rvi!5e0!3m2!1sen!2sfi!4v1641302533934!5m2!1sen!2sfi" id="world-map" style="height: 250px; width: 100%;"></iframe>
+    </div>
+}
+else if (Model.CustomerName.Contains("Organic"))
+{
+    <div class="card-header border-0">
+        <h3 class="card-title">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            @Model.CustomerName @Model.DataSource
+        </h3>
+    </div>
+    <div class="card-body">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1978.253889481318!2d24.95236311608455!3d60.27579678199992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468df7fdf78ac323%3A0x4ef9679e15ff23c7!2sLaamannintie%2017%2C%2000690%20Helsinki!5e0!3m2!1sen!2sfi!4v1641303159601!5m2!1sen!2sfi" id="world-map" style="height: 250px; width: 100%;"></iframe>
+    </div>
+}
+else if (Model.CustomerName.Contains("PartialTech"))
+{
+    <div class="card-header border-0">
+        <h3 class="card-title">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            @Model.CustomerName @Model.DataSource
+        </h3>
+    </div>
+    <div class="card-body">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1964.4519869474047!2d24.77245461609402!3d60.503770982085086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468de2bd5762b79f%3A0x8c0d276738010c70!2sUudenkyl%C3%A4ntie%2090%2C%2005200%20Nurmij%C3%A4rvi!5e0!3m2!1sen!2sfi!4v1641303483544!5m2!1sen!2sfi" id="world-map" style="height: 250px; width: 100%;"></iframe>
+    </div>
+}
+else
+{
+    <div class="card-header border-0">
+        <h3 class="card-title">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            @Model.CustomerName @Model.DataSource
+        </h3>
+    </div>
+    <div class="card-body">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7322166.496896468!2d19.81773048101691!3d63.381354041319824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4681cadf4b32f6dd%3A0x146d63c75a810!2sFinland!5e0!3m2!1sen!2sfi!4v1641304087912!5m2!1sen!2sfi" id="world-map" style="height: 250px; width: 100%;"></iframe>
+    </div>
+}

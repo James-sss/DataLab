@@ -1,0 +1,24 @@
+﻿
+/*----WellcomePage----*/
+
+.inner {
+    margin-top: 10px;
+}
+
+.inner h4 {
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.05rem
+}
+
+.inner p {
+    margin-top: -3px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04rem;
+}
+
+.inner h3 {
+    margin-top: -5px;
+    font-weight: 600;
+}

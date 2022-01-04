@@ -79,7 +79,6 @@ namespace DataLab.Controllers
                 ViewBag.totalDataFiles = TotalFilesCountlist;
             }
 
-
             return View(modelVm);
         }
     }
