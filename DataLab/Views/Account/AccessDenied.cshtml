@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "AccessDenied";
+    Layout = "_AdminLayout";
+}
+
+
+<div style="padding-top:20%">
+
+    <div class="error-content">
+        <h3><i class="fas fa-exclamation-triangle text-danger"></i> Action Denied! <br /> <span style="font-size:20px">You are not authorized </span></h3>
+
+        <p style="font-size:12px">
+            @ViewBag.ErrorMessageOthers
+            Meanwhile, you may return back.
+        </p>
+
+        <a href="##" onClick="history.go(-1); return false;" class="btn btn-danger" style="margin-top:1%"> Retun Back</a>
+    </div>
+
+</div>

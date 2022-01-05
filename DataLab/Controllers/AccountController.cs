@@ -264,9 +264,19 @@ namespace DataLab.Controllers
 
 
 
+        [HttpGet]
+        [Authorize]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+
+
         public IActionResult testpage()
         {
             return View();
         }
+
     }
 }
