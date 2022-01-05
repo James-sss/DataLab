@@ -1,0 +1,414 @@
+﻿@{
+    ViewData["Title"] = "CustomerCharts";
+    Layout = "_AdminLayout";
+
+    var customerId = ViewBag.CustomerId;
+    var CustomerName = ViewBag.CustomerName;
+    var dataSource = ViewBag.DataSource;
+}
+
+<link href="~/css/templateModification.css" rel="stylesheet" />
+
+<div class="container-fluid">
+
+    <div class="d-flex">
+        <div class="btn-group mt-3 " style="justify-content: flex-start">
+            <p class="pt-2 mb-1 ml-1 d-flex pagetitle-double"> <br /> <span><i class="fas fa-building"></i>&nbsp @CustomerName @dataSource </span> </p>
+            <a asp-controller="Access" asp-action="WelcomePage" type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Back</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-success mt-1">
+                <div class="card-header" style="background-color: #8c52ff;">
+                    <h3 class="card-title">Monthly Average Sensor Results</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <h5 class="text-center mt-4">Monthly Average Sensor Results</h5>
+                        <p>@ViewBag.firstYear - @ViewBag.lastYear </p>
+                        <canvas id="Chart_MonthlyAverageSensorResults" style="min-height: 250px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+                        <p class="mt-3 mb-4 text-muted" style="font-size:13px">@ViewBag.months</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card card-success mt-4">
+                <div class="card-header" style="background-color: #8c52ff;">
+                    <h3 class="card-title">Monthly Maxmum Sensor Values Results</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <h5 class="text-center mt-4">Monthly Maxmum Sensor Results</h5>
+                        <p>@ViewBag.firstYear - @ViewBag.lastYear </p>
+                        <canvas id="Chart_MonthlyMaxmumSensorResults" style="min-height: 250px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+                        <p class="mt-3 mb-4 text-muted" style="font-size:13px">@ViewBag.months</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card card-success mt-4">
+                <div class="card-header" style="background-color: #8c52ff;">
+                    <h3 class="card-title">Monthly Minimum Sensor Values Results</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <h5 class="text-center mt-4">Monthly Minimum Sensor Results</h5>
+                        <p>@ViewBag.firstYear - @ViewBag.lastYear </p>
+                        <canvas id="Chart_MonthlyMinimumSensorResults" style="min-height: 250px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+                        <p class="mt-3 mb-4 text-muted" style="font-size:13px">@ViewBag.months</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card card-success mt-4">
+                <div class="card-header" style="background-color: #8c52ff;">
+                    <h3 class="card-title">Monthly Total Collected Sensor Data</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <h5 class="text-center mt-4"> Total Collected Monthly Sensor Data </h5>
+                        <p>@ViewBag.firstYear - @ViewBag.lastYear </p>
+                        <canvas id="Chart_MonthlyTotalData" style="min-height: 250px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+                        <p class="mt-3 mb-4 text-muted" style="font-size:13px">@ViewBag.months</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script src="~/lib/chart-js/Chart.min.js"></script>
+
+    <script type="text/javascript">
+        const labels_sensorTypes1 = [@Html.Raw(ViewBag.sensorTypes)];
+        const datavalues_Avg = [@ViewBag.AverageValues];
+        var ctx = document.getElementById('Chart_MonthlyAverageSensorResults').getContext('2d');
+        var chart = new Chart(ctx, {
+           type: 'bar',
+           data: {
+               labels: labels_sensorTypes1,
+               datasets: [{
+                   label: '',
+                   data: datavalues_Avg,
+                    backgroundColor: [
+
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                    ],
+
+                   borderwidth: 1
+               }],
+           },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+
+
+
+        const labels_sensorTypes2 = [@Html.Raw(ViewBag.sensorTypes)];
+        const datavalues_Max = [@ViewBag.MaxmumValues];
+        var ctx = document.getElementById('Chart_MonthlyMaxmumSensorResults').getContext('2d');
+        var chart = new Chart(ctx, {
+           type: 'bar',
+           data: {
+               labels: labels_sensorTypes2,
+               datasets: [{
+                   label: '',
+                   data: datavalues_Max,
+                    backgroundColor: [
+
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                    ],
+
+                   borderwidth: 1
+               }],
+           },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+
+
+
+        const labels_sensorTypes3 = [@Html.Raw(ViewBag.sensorTypes)];
+        const datavalues_Min = [@ViewBag.MinimumValues];
+        var ctx = document.getElementById('Chart_MonthlyMinimumSensorResults').getContext('2d');
+        var chart = new Chart(ctx, {
+           type: 'bar',
+           data: {
+               labels: labels_sensorTypes3,
+               datasets: [{
+                   label: '',
+                   data: datavalues_Min,
+                    backgroundColor: [
+
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                    ],
+
+                   borderwidth: 1
+               }],
+           },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+
+
+
+
+        const labels_sensorTypes4 = [@Html.Raw(ViewBag.sensorTypes)];
+        const datavalues_Total = [@ViewBag.TotalDataFiles];
+        var ctx = document.getElementById('Chart_MonthlyTotalData').getContext('2d');
+        var chart = new Chart(ctx, {
+           type: 'bar',
+           data: {
+               labels: labels_sensorTypes4,
+               datasets: [{
+                   label: '',
+                   data: datavalues_Total,
+                    backgroundColor: [
+
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+                        'rgb(128, 128, 0)',
+
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+                        'rgb(0, 255, 255)',
+
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 99, 132)',
+                    ],
+
+                   borderwidth: 1
+               }],
+           },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+
+    </script>
+}

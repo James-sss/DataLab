@@ -72,8 +72,39 @@
                     }
                 </div>
 
+
+
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                        @if (_signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item menu-open">
+
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+
+                                        <a asp-controller="Access" asp-action="CustomerCharts" class="nav-link">
+                                            <i class="nav-icon fas fa-minus" style="color: #8c52ff"></i>
+                                            <p>View Charts</p>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+
+                                        <a asp-controller="Access" asp-action="CustomerData" class="nav-link">
+                                            <i class="nav-icon fas fa-minus" style="color: #8c52ff"></i>
+                                            <p>View Data</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
+
+
                         <li class="nav-item menu-closed">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-address-card nav-icon" style="color: #f5f5f5 "></i>

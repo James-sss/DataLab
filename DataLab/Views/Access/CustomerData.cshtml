@@ -1,0 +1,91 @@
+﻿@model GetResourceVM
+
+@{
+    ViewData["Title"] = "CustomerData";
+    Layout = "_AdminLayout";
+
+    var customerId = ViewBag.customerId;
+}
+
+<link href="~/css/templateModification.css" rel="stylesheet" />
+
+
+
+<div class="container-fluid">
+
+    <div class="d-flex">
+        <div class="btn-group mt-3 " style="justify-content: flex-start">
+            <p class="pt-2 mb-1 ml-1 d-flex pagetitle-double"> <br /> <span><i class="fas fa-building"></i>&nbsp @Model.CustomerName @Model.DataSource </span> </p>
+            <a asp-controller="Access" asp-action="WelcomePage" type="button" class="btn btn-default" style="color: blueviolet; font-weight: 600;">Back</a>
+        </div>
+    </div>
+
+    <div class="align-items-center pt-3 text-primary" id="loading">
+        <strong>Loading Data Please Wait...</strong>
+        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h3 class="card-title">All Customers Collected Data</h3>
+                </div>
+
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-striped">
+
+                        <thead>
+                            <tr>
+                                <th>Location</th>
+                                <th>Datetime</th>
+                                <th>SensorType</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+
+                        @if (Model.CollectedData.Any())
+                        {
+
+                            <tbody>
+
+                                @foreach (var data in Model.CollectedData)
+                                {
+
+                                    <tr>
+                                        <td>@data.Location </td>
+                                        <td>@data.Datetime </td>
+                                        <td>@data.SensorTypes.SensorType </td>
+                                        <td>@data.Value </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        }
+                        else
+                        {
+                            <tr><td colspan="4">Currently No Data Was Found !! </td></tr>
+                        }
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+
+    <script>
+        $(window).on('load', function () {
+            setTimeout(removeLoader, 2000);
+        });
+        function removeLoader() {
+            $("#loading").fadeOut(500, function () {
+              $("#loading").remove();
+            });
+        }
+    </script>
+}
