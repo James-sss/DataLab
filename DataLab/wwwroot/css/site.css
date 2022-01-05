@@ -146,6 +146,7 @@ body {
 .content-div {
     width: 100vmin;
     height: 100vmin;
+    margin-top: -10%;
 }
 
 .banner img {
@@ -203,6 +204,7 @@ body {
 .form-container {
     width: 100vmin;
     height: 100vmin;
+    margin-top: -10%;
 }
 
 .img-thumbnail {
