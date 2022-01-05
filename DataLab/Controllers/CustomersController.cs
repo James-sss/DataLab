@@ -91,6 +91,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> EditCustomer(EditCustomerVM modelVM)
         {
             if (ModelState.IsValid)
@@ -119,6 +120,7 @@ namespace DataLab.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> DeleteCustomer(int Id)
         {
             try

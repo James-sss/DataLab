@@ -37,6 +37,7 @@ namespace DataLab.Controllers
             return View(modelVM);
         }
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> AddSensor(AddSensorTypeVM modelVM)
         {
 
@@ -80,6 +81,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> EditSensor(EditSensorTypeVM modelVM)
         {
             if (ModelState.IsValid)
@@ -106,6 +108,7 @@ namespace DataLab.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> DeleteSenser(int Id)
         {
             try

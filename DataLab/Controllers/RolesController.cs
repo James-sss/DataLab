@@ -102,6 +102,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> EditUserRole(EditRoleVM model)
         {
             var role = await _roleManager.FindByIdAsync(model.Id);
@@ -133,6 +134,7 @@ namespace DataLab.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> DeleteRole(string Id)
         {
             var userRole = await _roleManager.FindByIdAsync(Id);
@@ -191,6 +193,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> AddRoleToUser(AddRoleToUserVM modelVM)
         {
 

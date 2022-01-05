@@ -197,7 +197,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Role_Admin")]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> EditRegisteredUser(EditRegisteredUserVM model)
         {
             var RegisteredUser = await _userManager.FindByIdAsync(model.Id);
@@ -232,7 +232,7 @@ namespace DataLab.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Role_Admin")]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> DeleteRegisteredUser(string Id)
         {
 

@@ -173,6 +173,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> EditData(EditDataVM modelVM)
         {
             var data = await _dataService.GetDataByid(modelVM.CollectedDataId);
@@ -216,6 +217,7 @@ namespace DataLab.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Role_SuperAdmin")]
         public async Task<IActionResult> DeleteData(int Id)
         {
 
