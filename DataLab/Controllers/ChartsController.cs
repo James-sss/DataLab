@@ -1,5 +1,6 @@
 ﻿using DataLab.IServices;
 using DataLab.ViewModels.Chart;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLab.Controllers
 {
+    [Authorize(Roles = "Role_Admin")]
     public class ChartsController : Controller
     {
         private readonly IDataService _dataService;

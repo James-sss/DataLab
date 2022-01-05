@@ -29,6 +29,7 @@ namespace DataLab.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Role_Admin")]
         public IActionResult Register()
         {
             var modelVM = new RegisterVM()
@@ -39,6 +40,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Role_Admin")]
         public async Task<IActionResult> Register(RegisterVM model)
         {
             if (ModelState.IsValid)
@@ -81,12 +83,14 @@ namespace DataLab.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginVm model)
         {
             if (ModelState.IsValid)
@@ -107,12 +111,14 @@ namespace DataLab.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult DemoLogin()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> DemoLogin(DemoLoginVM model)
         {
             if (ModelState.IsValid)
@@ -134,6 +140,7 @@ namespace DataLab.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -161,6 +168,7 @@ namespace DataLab.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Role_Admin")]
         public async Task<IActionResult> EditRegisteredUser(string Id)
         {
 
@@ -189,6 +197,7 @@ namespace DataLab.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Role_Admin")]
         public async Task<IActionResult> EditRegisteredUser(EditRegisteredUserVM model)
         {
             var RegisteredUser = await _userManager.FindByIdAsync(model.Id);
@@ -223,6 +232,7 @@ namespace DataLab.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Role_Admin")]
         public async Task<IActionResult> DeleteRegisteredUser(string Id)
         {
 

@@ -2,6 +2,7 @@
 using DataLab.IServices;
 using DataLab.Models;
 using DataLab.ViewModels.Sensor;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataLab.Controllers
 {
+    [Authorize(Roles = "Role_Admin")]
     public class SensorController : Controller
     {
         private readonly ISensorService _sensorService;

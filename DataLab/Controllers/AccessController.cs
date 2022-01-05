@@ -2,6 +2,7 @@
 using DataLab.Models;
 using DataLab.ViewModels.Accsess;
 using DataLab.ViewModels.Chart;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataLab.Controllers
 {
+    [Authorize]
     public class AccessController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

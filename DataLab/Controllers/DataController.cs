@@ -2,6 +2,7 @@
 using DataLab.IServices;
 using DataLab.Models;
 using DataLab.ViewModels.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace DataLab.Controllers
 {
+    [Authorize(Roles = "Role_Admin")]
     public class DataController : Controller
     {
         private readonly IDataService _dataService;
