@@ -31,7 +31,7 @@ namespace DataLab
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddDbContextPool<DataLabDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DataLab-DatabaseConnection")));
+            services.AddDbContextPool<DataLabDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DataLabDatabaseConnectionAzure")));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DataLabDbContext>();
             services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
 
