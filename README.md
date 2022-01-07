@@ -36,5 +36,6 @@ Live Demo: https://data-lab.azurewebsites.net
 
 ## Data flow diagrams
 #### Application users
+![DataFlowChart1](https://user-images.githubusercontent.com/53993050/148556436-71627fda-47b1-4256-9336-fa231e217f2b.png)
 #### Admin and SuperAdmin users
 
