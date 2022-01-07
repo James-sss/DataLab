@@ -1,12 +1,12 @@
 # Data-Lab
-Data-Lab is a full-stack application with UI and a backend for displaying data from different clients using tables and charts for statistical analysis,
+Data-Lab is a full-stack web application with UI and a backend for displaying data from different clients using tables and charts for statistical analysis,
 inspired by Solita's Dev Academy program 2022 entry exercise https://github.com/solita/dev-academy-2022-exercise.
 Data is received from clients in CSV files processed and added to the database.
 
 Live Demo: https://data-lab.azurewebsites.net
 
 ## Architecture
-#### languages and libraries
+#### Languages, Libraries, and frameworks
 - C#
 - Asp MVC Core 5
 - Microsoft SQL server
