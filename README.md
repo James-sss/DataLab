@@ -32,3 +32,7 @@ Live Demo: https://data-lab.azurewebsites.net
 ![Site Map 2](https://user-images.githubusercontent.com/53993050/148554579-021fc63e-58eb-4fd7-9e2d-638e0c559b09.png)
 
 ## Database relationship model
+![DataBase Model](https://user-images.githubusercontent.com/53993050/148555339-f3d1e860-8cbd-4df6-873a-514b6b15e6ed.png)
+
+
+
