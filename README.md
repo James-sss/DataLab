@@ -3,7 +3,7 @@ Data-Lab is a full-stack web application with UI and a backend for displaying da
 inspired by Solita's Dev Academy program 2022 entry exercise https://github.com/solita/dev-academy-2022-exercise.
 Data is received from clients in CSV files processed and added to the database.
 
-Live Demo: https://data-lab.azurewebsites.net
+#### Live Demo: https://data-lab.azurewebsites.net
 
 ## Architecture
 #### Languages, Libraries, and frameworks
