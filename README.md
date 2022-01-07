@@ -31,7 +31,7 @@ Live Demo: https://data-lab.azurewebsites.net
 ![Site Map1](https://user-images.githubusercontent.com/53993050/148553941-9d7acd36-746d-49f1-a7e9-71dd653565a7.png)
 ![Site Map 2](https://user-images.githubusercontent.com/53993050/148554579-021fc63e-58eb-4fd7-9e2d-638e0c559b09.png)
 
-## Database relationship model
+## Database relationship model (ER model)
 ![DataBase Model](https://user-images.githubusercontent.com/53993050/148555339-f3d1e860-8cbd-4df6-873a-514b6b15e6ed.png)
 
 
