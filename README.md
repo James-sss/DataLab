@@ -28,3 +28,4 @@ Live Demo: https://data-lab.azurewebsites.net
 - Microsoft SQL server management studio
 
 ## Application Map
+![Site Map1](https://user-images.githubusercontent.com/53993050/148553941-9d7acd36-746d-49f1-a7e9-71dd653565a7.png)
