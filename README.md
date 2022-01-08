@@ -21,7 +21,7 @@ Data is received from clients in CSV files processed and added to the database.
 - Github
 - Azure
 
-#### Data process Tools
+#### Data process tools
 - Notepad
 - Excel
 - https://www.convertcsv.com/csv-to-sql.htm
