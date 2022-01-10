@@ -9,6 +9,7 @@ Data is received from clients in CSV files processed and added to the database.
 #### Languages, Libraries, and frameworks
 - C#
 - ASP MVC Core 5
+- Entity Framework
 - Microsoft SQL server
 - Javascript, Html ,CSS
 - Bootstrap
