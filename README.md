@@ -43,3 +43,18 @@ Data is received from clients in CSV files processed and added to the database.
 #### Admin and SuperAdmin users
 ![DataFlowChat2](https://user-images.githubusercontent.com/53993050/148556574-2d43e745-65dc-41f9-8eed-bdb26f514c3a.png)
 
+## Prerequisites before running project 
+ - Visual studio 2019
+ - ASP.Net Core 5
+ - SQL Server 2017
+
+## How to run the project
+
+ - Add this project to a location in your disk.
+ - Open the solution file using the Visual Studio 2019.
+ - Restore the NuGet packages by rebuilding the solution.
+ - Change the connection string in the appsettings.json file that points to your SQL Server
+ - Execute a migration to create database tables
+ - Run the project.
+
+
