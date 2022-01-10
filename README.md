@@ -17,7 +17,7 @@ Data is received from clients in CSV files processed and added to the database.
 
 ## Tools
 #### Development tools
-- Visual studio 
+- Visual studio 2019
 - Github
 - Azure
 
