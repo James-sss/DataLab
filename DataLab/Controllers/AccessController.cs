@@ -200,9 +200,6 @@ namespace DataLab.Controllers
             ViewBag.firstYear = getyears.Select(e => e.DateTime?.ToString("MM/dd/yyyy")).Last();
             ViewBag.lastYear = getyears.Select(e => e.DateTime?.ToString("MM/dd/yyyy")).First();
 
-            //Testing results with json
-            //return Json(GetSensorDataResults);
-
             return View();
         }
 
