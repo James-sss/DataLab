@@ -3,6 +3,7 @@ using DataLab.DataManager;
 using DataLab.IServices;
 using DataLab.Models;
 using DataLab.Repositories;
+using DataLab.SeedHandler;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -40,10 +41,11 @@ namespace DataLab
             services.AddScoped<ISensorService, SensorRepository>();
             services.AddScoped<IDataService, DataRepository>();
             services.AddScoped<IAccessService, AccessRepository>();
+            services.AddScoped<ISeedInitializer, SeedInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedInitializer _seedInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +67,8 @@ namespace DataLab
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            _seedInitializer.ExecuteSeed();
 
             app.UseEndpoints(endpoints =>
             {

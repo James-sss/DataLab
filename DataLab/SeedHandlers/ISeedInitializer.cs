@@ -7,5 +7,6 @@ namespace DataLab.SeedHandler
 {
     public interface ISeedInitializer
     {
+        void ExecuteSeed();
     }
 }
