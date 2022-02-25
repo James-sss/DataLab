@@ -1,0 +1,22 @@
+[
+  {
+    "CustomerName": "Noora's ",
+    "DataSource": "Farm",
+    "Address": "Alakitisentie 899, 99550 Sodankylä"
+  },
+  {
+    "CustomerName": "PartialTech",
+    "DataSource": "Farm",
+    "Address": "Ilmalankuja 15 Pori"
+  },
+  {
+    "CustomerName": "Friman",
+    "DataSource": "Farm",
+    "Address": "Kekkosentie 491, 43100 Saarijärvi"
+  },
+  {
+    "CustomerName": "Organic",
+    "DataSource": "Farm",
+    "Address": "Pernajantie 97 Lohja"
+  }
+]

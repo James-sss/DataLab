@@ -1,0 +1,5 @@
+[
+  { "SensorType": "temperature" },
+  { "SensorType": "rainFall" },
+  { "SensorType": "pH" }
+]
