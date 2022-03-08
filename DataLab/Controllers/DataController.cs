@@ -102,6 +102,10 @@ namespace DataLab.Controllers
                 return View("DashBordNotFoundErros");
             }
 
+            ViewBag.Customerid = modelVM.CustomerId;
+            ViewBag.CustomerName = modelVM.CustomerName;
+            ViewBag.Datasource = customer.DataSource;
+
             var SensorTypesSelectList = _sensorService.GetAllSensorTypes().Select(e => new SelectListItem()
             {
                 Text = e.SensorType,
@@ -131,7 +135,7 @@ namespace DataLab.Controllers
 
             ViewBag.SensorTypesSelectList = new SelectList(SensorTypesSelectList, "Value", "Text");
 
-            return View();
+            return View(modelVM);
         }
 
 
@@ -184,6 +188,9 @@ namespace DataLab.Controllers
                 return View("DashBordNotFoundErros");
             }
 
+            ViewBag.CustomerId = modelVM.CustomerId;
+            ViewBag.DataId = modelVM.CollectedDataId;
+
             var SensorTypesSelectList = _sensorService.GetAllSensorTypes().Select(e => new SelectListItem()
             {
                 Text = e.SensorType,
@@ -211,7 +218,7 @@ namespace DataLab.Controllers
 
             ViewBag.SensorTypesSelectList = new SelectList(SensorTypesSelectList, "Value", "Text");
 
-            return View();
+            return View(modelVM);
         }
 
 

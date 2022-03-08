@@ -64,23 +64,23 @@
             </div>
         </div>
 
-        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 mt-2">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Authorized Users</h3>
-                </div>
-                <div class="card-body">
-                    <table id="table1" class="table table-bordered table-striped">
 
-                        <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>AccountType</th>
-                            </tr>
-                        </thead>
+        @if (Model.AuthorizedUsersList != null) { 
 
-                        @if (Model.AuthorizedUsersList.Any())
-                        {
+            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 mt-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Authorized Users</h3>
+                    </div>
+                    <div class="card-body">
+                        <table id="table1" class="table table-bordered table-striped">
+
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>AccountType</th>
+                                </tr>
+                            </thead>
 
                             <tbody>
 
@@ -95,14 +95,11 @@
                                 }
 
                             </tbody>
-                        }
-                        else
-                        {
-                            <tr><td colspan="2">No Authorized Users Found !! </td></tr>
-                        }
-                    </table>
+                          
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+         }
     </div>
 </div>

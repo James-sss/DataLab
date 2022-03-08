@@ -37,27 +37,27 @@
             </div>
         </div>
 
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-            <div class="card mt-2">
-                <div class="card-header">
-                    <h3 class="card-title">All Added Sensors</h3>
-                </div>
 
-                <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
+        @if (Model.ListSensorTypes != null) { 
+
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                <div class="card mt-2">
+                    <div class="card-header">
+                        <h3 class="card-title">All Added Sensors</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
 
 
-                        <thead>
-                            <tr>
-                                <th>Sensor Type</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                            <thead>
+                                <tr>
+                                    <th>Sensor Type</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
 
-                        @if (Model.ListSensorTypes.Any())
-                        {
-
-                             <tbody>
+                            <tbody>
 
                                 @foreach (var sensor in Model.ListSensorTypes)
                                 {
@@ -73,15 +73,12 @@
                                     </tr>
                                 }
 
-                             </tbody>
-                        }
-                        else
-                        {
-                            <tr><td colspan="2">Currently No Sensors Were Found !! </td></tr>
-                        }
-                    </table>
+                            </tbody>
+                          
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+         }
     </div>
 </div>

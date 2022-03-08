@@ -53,7 +53,7 @@ namespace DataLab.Controllers
                 _toastNotification.Success($"Sensor {modelVM.SensorType} was successfully added ");
                 return RedirectToAction("AddSensor");
             }
-            return View();
+            return View(modelVM);
         }
 
 
@@ -102,7 +102,7 @@ namespace DataLab.Controllers
                 _toastNotification.Success($"Sensor {modelVM.SensorType} was successfully updated ");
                 return RedirectToAction("AddSensor");
             }
-            return View();
+            return View(modelVM);
         }
 
 

@@ -62,7 +62,7 @@ namespace DataLab.Controllers
                 _toastNotification.Success($"Customer {modelVM.CustomerName} was successfully added ");
                 return RedirectToAction("AddCustomer");
             }
-            return View();
+            return View(modelVM);
         }
 
 
@@ -114,7 +114,7 @@ namespace DataLab.Controllers
                 _toastNotification.Success($"Customer {modelVM.CustomerName} was successfully updated ");
                 return RedirectToAction("AddCustomer");
             }
-            return View();
+            return View(modelVM);
         }
 
 

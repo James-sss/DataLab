@@ -49,30 +49,28 @@
             </div>
         </div>
 
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-            <div class="card mt-2">
-                <div class="card-header">
-                    <h3 class="card-title">All Added Customers</h3>
-                </div>
 
-                <div class="card-body">
-                    <table id="table1" class="table table-bordered table-striped">
+        @if (Model.CustomerList != null) { 
 
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                <div class="card mt-2">
+                    <div class="card-header">
+                        <h3 class="card-title">All Added Customers</h3>
+                    </div>
 
-                        <thead>
-                            <tr>
-                                <th>Customer</th>
-                                <th>Address</th>
-                                <th>DataSource</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                    <div class="card-body">
+                        <table id="table1" class="table table-bordered table-striped">
 
-                        @if (Model.CustomerList.Any())
-                        {
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Address</th>
+                                    <th>DataSource</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
 
-
-                            <tbody>
+                             <tbody>
 
                                 @foreach (var customer in Model.CustomerList)
                                 {
@@ -90,17 +88,11 @@
                                     </tr>
                                 }
 
-
-                            </tbody>
-                        }
-                        else
-                        {
-                            <tr><td colspan="2">Currently No Customers Were Found !! </td></tr>
-                        }
-                    </table>
-
+                             </tbody>
+                        </table>
+                     </div>
                 </div>
             </div>
-        </div>
+         }
     </div>
 </div>
