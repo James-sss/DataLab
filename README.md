@@ -23,9 +23,6 @@ Data is received from clients in CSV files processed and added to the database.
 - Azure
 
 #### Data process tools
-- Notepad
-- Excel
-- https://www.convertcsv.com/csv-to-sql.htm
 - Microsoft SQL server management studio
 
 ## Application Maps
@@ -55,6 +52,6 @@ Data is received from clients in CSV files processed and added to the database.
  - Restore the NuGet packages by rebuilding the solution.
  - Change the connection string in the appsettings.json file that points to your SQL Server
  - Execute a migration to create database tables
- - Run the project.
+ - Run the project. Database will be seeded during runtime.
 
 
