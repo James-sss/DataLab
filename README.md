@@ -22,6 +22,11 @@ Data is received from clients in CSV files processed and added to the database.
 - Github
 - Azure
 
+## Unit Testing
+#### frameworks
+- xUnit.net
+- Moq
+
 #### Data process tools
 - Microsoft SQL server management studio
 
