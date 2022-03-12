@@ -6,7 +6,7 @@ Data is received from clients in CSV files processed and added to the database.
 #### Live Demo: https://data-lab.azurewebsites.net
 
 ## Architecture
-#### Languages, Libraries, and frameworks
+#### Languages, Libraries, And Frameworks
 - C#
 - ASP MVC Core 5
 - Entity Framework
@@ -23,7 +23,7 @@ Data is received from clients in CSV files processed and added to the database.
 - Azure
 
 ## Unit Testing
-#### frameworks
+#### Frameworks
 - xUnit.net
 - Moq
 
