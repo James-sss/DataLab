@@ -23,14 +23,12 @@ namespace DataLab.UnitTests.ActualControllerTests
         {
         }
 
-
         [Fact]
         public void AddSensorHttpGet_ShouldReturn_ViewModel()
         {
             var result = _controller.AddSensor();
 
             var viewResult = Assert.IsType<ViewResult>(result);
-
             Assert.NotNull(viewResult.ViewData.Model);
         }
 
@@ -49,7 +47,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task AddSensorHttPost_ShouldReturnARedirectToAction_AfterSuccessfulExecution()
+        public async Task AddSensorHttpPost_ShouldReturnARedirectToAction_AfterSuccessfulExecution()
         {
             var modelVm = new AddSensorTypeVM();
 
@@ -61,7 +59,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task AddSensorHttPost_ShouldCallAddSensorTypeMethoOnce_IfModelStateIsValid()
+        public async Task AddSensorHttpPost_ShouldCallAddSensorTypeMethoOnce_IfModelStateIsValid()
         {
             var modelVm = new AddSensorTypeVM()
             { SensorType = "Type 1 " };
@@ -74,7 +72,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task AddSensorHttPost_ShouldCallAddSensorTypeMethodOnce_WithValidViewModelProperties_AndAValidModelState()
+        public async Task AddSensorHttpPost_ShouldCallAddSensorTypeMethodOnce_WithValidViewModelPropertiesAndValidModelState()
         {
             var sensor = FakeSensor_1;
             var modelVm = new AddSensorTypeVM() { SensorType = "Type 1 " };
@@ -86,10 +84,9 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task AddSensorHttPost_ShouldReturnAddSensorTypeViewModel_IfModelStateIsInvalid()
+        public async Task AddSensorHttpPost_ShouldReturnAddSensorTypeViewModel_IfModelStateIsInvalid()
         {
             var modelVm = new AddSensorTypeVM();
-
             _controller.ModelState.AddModelError("error", "testerror");
 
             var result = await _controller.AddSensor(modelVm);
@@ -101,9 +98,8 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task EditSensorHttGet_ShouldReturnStatusCode404_ifSensorIdIsNull()
+        public async Task EditSensorHttpGet_ShouldReturnStatusCode404_ifSensorIdIsNull()
         {
-
             _controller.ControllerContext = new ControllerContext();
             _controller.ControllerContext.HttpContext = new DefaultHttpContext();
             var response = _controller.ControllerContext.HttpContext.Response;
@@ -116,7 +112,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task EditSensorHttGet_ShouldBeOfType_EditSensorTypeViewModel()
+        public async Task EditSensorHttpGet_ShouldBeOfType_EditSensorTypeViewModel()
         {
             _SensorServiceStub.Setup(x => x.GetSensorTypeByid(FakeSensor_1.SensorTypeId)).ReturnsAsync(FakeSensor_1);
 
@@ -128,7 +124,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task EditSensorHttPost_ShouldCallUpdateSensorTypeMethodOnce_WithValidViewModelProperties_AndAValidModelState()
+        public async Task EditSensorHttpPost_ShouldCallUpdateSensorTypeMethodOnce_WithValidViewModelPropertiesAndValidModelState()
         {
             var sensor = FakeSensor_2;
             _SensorServiceStub.Setup(x => x.GetSensorTypeByid(sensor.SensorTypeId)).ReturnsAsync(sensor);
@@ -142,7 +138,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task EditSensorHttPost_ShouldReturnARedirectToAction_AfterSuccessfulExecution()
+        public async Task EditSensorHttpPost_ShouldReturnARedirectToAction_AfterSuccessfulExecution()
         {
             var sensor = FakeSensor_1;
             _SensorServiceStub.Setup(repo => repo.GetSensorTypeByid(sensor.SensorTypeId)).ReturnsAsync(sensor);
@@ -156,11 +152,11 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task EditSensorHttPost_ShouldReturnEditSensorTypeViewModel_IfModelStateIsInvalid()
+        public async Task EditSensorHttpPost_ShouldReturnEditSensorTypeViewModel_IfModelStateIsInvalid()
         {
             var modelVm = new EditSensorTypeVM();
-
             _controller.ModelState.AddModelError("error", "testerror");
+
             var result = await _controller.EditSensor(modelVm);
 
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -169,9 +165,8 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task DeleteSensorHttGet_ShouldReturnStatusCode404_ifSensorIdIsNull()
+        public async Task DeleteSensorHttpGet_ShouldReturnStatusCode404_ifSensorIdIsNull()
         {
-
             _controller.ControllerContext = new ControllerContext();
             _controller.ControllerContext.HttpContext = new DefaultHttpContext();
             var response = _controller.ControllerContext.HttpContext.Response;
@@ -184,7 +179,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task DeleteSensorHttPost_ShouldCallDeleteSensorTypeMethodOnce()
+        public async Task DeleteSensorHttpPost_ShouldCallDeleteSensorTypeMethodOnce()
         {
             var sensor = FakeSensor_1;
             _SensorServiceStub.Setup(x => x.GetSensorTypeByid(sensor.SensorTypeId)).ReturnsAsync(sensor);
@@ -196,7 +191,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task DeleteSensorHttPost_ShouldReturnARedirectToAction_AfterSuccessfulExecution()
+        public async Task DeleteSensorHttpPost_ShouldReturnARedirectToAction_AfterSuccessfulExecution()
         {
             var sensor = FakeSensor_1;
             _SensorServiceStub.Setup(x => x.GetSensorTypeByid(sensor.SensorTypeId)).ReturnsAsync(sensor);

@@ -54,7 +54,6 @@ namespace DataLab.UnitTests.ActualControllerTests
         [Fact]
         public async Task AddDataHttpGet_ShouldReturnStatusCode404_ifIdIsNull()
         {
-
             _Controller.ControllerContext = new ControllerContext();
             _Controller.ControllerContext.HttpContext = new DefaultHttpContext();
             var response = _Controller.ControllerContext.HttpContext.Response;
@@ -77,7 +76,6 @@ namespace DataLab.UnitTests.ActualControllerTests
 
             var viewResult = Assert.IsType<ViewResult>(result);
             Assert.NotNull(viewResult.ViewData.Model);
-
         }
 
 
@@ -105,12 +103,11 @@ namespace DataLab.UnitTests.ActualControllerTests
             var result = await _Controller.AddData(modelVm);
 
             _dataServiceStub.Verify(x => x.AddData(It.IsAny<CollectedData>()), Times.Once);
-
         }
 
 
         [Fact]
-        public async Task AddSensorHttpPost_ShouldCallAddDataMethodOnce_WithValidViewModelProperties_AndAValidModelState()
+        public async Task AddSensorHttpPost_ShouldCallAddDataMethodOnce_WithValidViewModelPropertiesAndValidModelState()
         {
             var customer = FakeCustomer;
             _customerServiceStub.Setup(x => x.GetCustomerByid(customer.CustomerId)).ReturnsAsync(customer);
@@ -134,14 +131,12 @@ namespace DataLab.UnitTests.ActualControllerTests
 
             var viewResult = Assert.IsType<ViewResult>(result);
             Assert.IsAssignableFrom<AddDataVM>(viewResult.ViewData.Model);
-
         }
 
 
         [Fact]
         public async Task EditDataHttpGet_ShouldReturnStatusCode404_ifIdIsNull()
         {
-
             _Controller.ControllerContext = new ControllerContext();
             _Controller.ControllerContext.HttpContext = new DefaultHttpContext();
             var response = _Controller.ControllerContext.HttpContext.Response;
@@ -166,7 +161,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task EditDataHttpPost_ShouldCallUpdateDataMethodOnce_WithValidViewModelProperties_AndAValidModelState()
+        public async Task EditDataHttpPost_ShouldCallUpdateDataMethodOnce_WithValidViewModelPropertiesAndValidModelState()
         {
             var data = FakeData;
             _dataServiceStub.Setup(x => x.GetDataByid(data.Id)).ReturnsAsync(data);
@@ -196,7 +191,6 @@ namespace DataLab.UnitTests.ActualControllerTests
         [Fact]
         public async Task DeleteDataHttpGet_ShouldReturnStatusCode404_ifIdIsNull()
         {
-
             _Controller.ControllerContext = new ControllerContext();
             _Controller.ControllerContext.HttpContext = new DefaultHttpContext();
             var response = _Controller.ControllerContext.HttpContext.Response;
@@ -221,7 +215,7 @@ namespace DataLab.UnitTests.ActualControllerTests
 
 
         [Fact]
-        public async Task DeleteDataHttPost_ShouldReturnARedirectToAction_AfterSuccessfulExecution()
+        public async Task DeleteDataHttpPost_ShouldReturnARedirectToAction_AfterSuccessfulExecution()
         {
 
             var data = FakeData;
